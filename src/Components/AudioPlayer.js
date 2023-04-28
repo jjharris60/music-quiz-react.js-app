@@ -42,28 +42,51 @@
 //     })
 // }
 // export default AudioPlayer;
-import { useState } from 'react';
-import { tracks } from '../audio/tracks';
-// import DisplayTrack from './DisplayTrack';
-// // import Controls from './Controls';
-// import ProgressBar from './ProgressBar';
-const AudioPlayer = () => {
-    const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-    const currentTrack = tracks[currentTrackIndex];
 
-    const handleNextTrack = () => {
-        const nextTrackIndex = (currentTrackIndex + 1) % tracks.length;
-        setCurrentTrackIndex(nextTrackIndex)
-    };
+import { useRef, useState } from 'react';
+import { tracks } from '../audio/tracks';
+
+// Importing the components
+import DisplayTrack from './DisplayTrack';
+import Controls from './Controls';
+import ProgressBar from './ProgressBar';
+
+// const AudioPlayer = () => {
+//     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+//     const currentTrack = tracks[currentTrackIndex];
+
+//     const handleNextTrack = () => {
+//         const nextTrackIndex = (currentTrackIndex + 1) % tracks.length;
+//         setCurrentTrackIndex(nextTrackIndex)
+//     };
+
+//     return (
+//         <div>
+//             <p>Welcome Mr Harris</p>
+//             <audio controls src={currentTrack.src} onEnded={handleNextTrack} autoPlay>
+//             </audio>
+//         </div>
+//     );
+// };
+
+const AudioPlayer = () => {
+    const [currentTrack, setCurrentTrack] = useState(tracks[0]);
+
+    // reference
+    const audioRef = useRef();
 
     return (
-        <div>
-            <p>Welcome Mr Harris</p>
-            <audio controls src={currentTrack.src} onEnded={handleNextTrack} autoPlay>
-            </audio>
+        <div className="audio-player">
+            <div className="inner">
+                <DisplayTrack
+                    currentTrack={currentTrack}
+                    audioRef={audioRef}
+                />
+                <Controls audioRef={audioRef} />
+                <ProgressBar />
+            </div>
         </div>
     );
 };
-
 export default AudioPlayer;
 

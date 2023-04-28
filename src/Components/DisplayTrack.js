@@ -1,7 +1,7 @@
-const DisplayTrack = () => {
+const DisplayTrack = ({ currentTrack, audioRef }) => {
     return (
         <div>
-            <p>DisplayTrack content here</p>
+            <audio src={currentTrack.src} ref={audioRef} />
         </div>
     )
 };
