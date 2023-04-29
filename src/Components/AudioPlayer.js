@@ -1,89 +1,31 @@
-// import { tracks } from '../audio/tracks';
-// import { useEffect, useRef } from 'react';
-// import DisplayTrack from './DisplayTrack';
-// import Controls from './Controls';
-// import ProgressBar from './ProgressBar';
-
-// const AudioPlayer = () => {
-//     const audioRef = useRef();
-
-//     useEffect(() => {
-//         // Creates a new Audio object
-//         const audio = new Audio();
-
-//         // Setting up and event listener for when the audio finishes playing
-//         audio.addEventListener('ended', () => {
-//             audioRef.current.src = tracks[(tracks.indexOf(audioRef.current.src) + 1) % tracks.length].src;
-//         });
-//         // Set the initial source of the audio object to the first track
-//         audio.src = tracks[0].src
-//         // Store the audio object in the ref so we can access it later
-//         audioRef.current = audio;
-
-//         // Play function
-//         const play = () => {
-//             audioRef.current.play();
-//         };
-
-//         // Pause function
-//         const pause = () => {
-//             audioRef.current.pause();
-//         };
-//         return (
-//             <div>
-//                 <p>Welcome Mr Harris</p>
-//                 <DisplayTrack />
-//                 <Controls />
-//                 <ProgressBar />
-//                 <Controls play={play} pause={pause}></Controls>
-//                 <audio ref={audioRef} controls></audio>
-//             </div>
-//         )
-//     })
-// }
-// export default AudioPlayer;
-
 import { useRef, useState } from 'react';
-import { tracks } from '../audio/tracks';
+import { tracks } from '../data/tracks';
 
-// Importing the components
+// import components
 import DisplayTrack from './DisplayTrack';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
 
-// const AudioPlayer = () => {
-//     const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-//     const currentTrack = tracks[currentTrackIndex];
-
-//     const handleNextTrack = () => {
-//         const nextTrackIndex = (currentTrackIndex + 1) % tracks.length;
-//         setCurrentTrackIndex(nextTrackIndex)
-//     };
-
-//     return (
-//         <div>
-//             <p>Welcome Mr Harris</p>
-//             <audio controls src={currentTrack.src} onEnded={handleNextTrack} autoPlay>
-//             </audio>
-//         </div>
-//     );
-// };
-
 const AudioPlayer = () => {
-    const [currentTrack, setCurrentTrack] = useState(tracks[0]);
+    const [trackIndex, setTrackIndex] = useState(0)
+    const [currentTrack, setCurrentTrack] = useState(tracks[trackIndex]);
+    const [timeProgress, setTimeProgress] = useState(0);
+    const [duration, setDuration] = useState(0);
 
     // reference
     const audioRef = useRef();
-
+    const progressBarRef = useRef();
     return (
         <div className="audio-player">
             <div className="inner">
-                <DisplayTrack
-                    currentTrack={currentTrack}
-                    audioRef={audioRef}
-                />
-                <Controls audioRef={audioRef} />
-                <ProgressBar />
+                <DisplayTrack {...{ currentTrack, audioRef, setDuration, progressBarRef }} />
+                <Controls {...{
+                    audioRef, progressBarRef, duration, setTimeProgress, tracks,
+                    trackIndex,
+                    setTrackIndex,
+                    setCurrentTrack,
+                }} />
+                <ProgressBar {...{ progressBarRef, audioRef, timeProgress, duration }} />
             </div>
         </div>
     );
