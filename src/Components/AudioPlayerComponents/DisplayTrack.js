@@ -10,9 +10,9 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef }) =
             <div className="track-info" id="audio-image" style={{ display: 'none' }}>
                 <img alt="track-cover" src={currentTrack.thumbnail} />
             </div>
-            <div className="track-info" id="audio-text" style={{ display: 'none' }}>
-                <p className="track-info" id="song-title">{currentTrack.title}</p>
-                <p className="track-info" id="song-author">{currentTrack.author}</p>
+            <div className="track-info" id="audio-text" >
+                <p className="track-info" id="song-title" style={{ display: 'none' }}>{currentTrack.title}</p>
+                <p className="track-info" id="song-author" style={{ display: 'none' }}>{currentTrack.author}</p>
             </div>
         </div>
     );

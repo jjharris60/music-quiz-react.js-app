@@ -4,8 +4,10 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     // const [scoreValue, newScoreValue] = useState(0)
     // const classElements = Array.from(document.querySelectorAll('.track-info'));
     const thumbnail = document.getElementById('audio-image');
-    const trackInfo = document.getElementById('audio-text');
+    const trackTitle = document.getElementById('song-title');
+    const trackAuthor = document.getElementById('song-author');
     const nextButton = document.getElementById('next-button');
+    const submitButton = document.getElementById('submit-button');
 
     // classElements.forEach(element => {
     //     element.style.display = 'none'
@@ -35,6 +37,9 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             //     element.style.display = 'none'
             // });
             nextButton.style.display = 'block'
+            trackTitle.style.display = 'block'
+            trackAuthor.style.display = 'block'
+            submitButton.style.display = 'none'
         } else {
             alert('Wrong answer, try again')
         }
@@ -44,8 +49,11 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     const nextTrack = () => {
         nextButton.style.display = 'none'
         thumbnail.style.display = 'none'
+        trackTitle.style.display = 'none'
+        trackAuthor.style.display = 'none'
         setTrackIndex((prev) => prev + 1)
         setCurrentTrack(tracks[trackIndex + 1])
+        submitButton.style.display = 'block'
     }
 
     return (
@@ -53,7 +61,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             <p className="input-elements">{currentTrack.question}</p>
             <button id="next-button" style={{ display: 'none' }} onClick={nextTrack} />
             <input className="input-elements" id="input-field" type="text" value={inputValue} onChange={userInputHandler} />
-            <button className="input-elements" id="submit-button" onClick={checkYourAnwser} />
+            <button className="input-elements" id="submit-button" style={{ display: 'block' }} onClick={checkYourAnwser} />
             {/* <p>Score:{scoreValue}</p> */}
         </div>
     )
