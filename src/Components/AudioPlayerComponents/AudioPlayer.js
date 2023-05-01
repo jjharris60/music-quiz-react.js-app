@@ -27,7 +27,7 @@ const AudioPlayer = () => {
                     setCurrentTrack,
                 }} />
                 <ProgressBar {...{ progressBarRef, audioRef, timeProgress, duration }} />
-                <QuizInput {...{ currentTrack, trackIndex, setTrackIndex, setCurrentTrack, tracks }} />
+                <QuizInput {...{ audioRef, currentTrack, trackIndex, setTrackIndex, setCurrentTrack, tracks }} />
             </div>
         </div>
     );

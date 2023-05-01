@@ -7,12 +7,12 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef }) =
     return (
         <div>
             <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata} autoPlay />
-            <div className="audio-image">
+            <div className="track-info" id="audio-image">
                 <img alt="track-cover" src={currentTrack.thumbnail} />
             </div>
-            <div className="audio-text">
-                <p className="song-title">{currentTrack.title}</p>
-                <p className="song-author">{currentTrack.author}</p>
+            <div className="track-info" id="audio-text">
+                <p className="track-info" id="song-title">{currentTrack.title}</p>
+                <p className="track-info" id="song-author">{currentTrack.author}</p>
             </div>
         </div>
     );

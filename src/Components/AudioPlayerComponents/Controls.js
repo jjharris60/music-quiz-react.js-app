@@ -37,7 +37,7 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
     } else {
       audioRef.current.pause();
     }
-    playAnimationRef.current = requestAnimationFrame(repeat)
+    playAnimationRef.current = requestAnimationFrame(repeat);
   }, [isPlaying, audioRef, repeat]);
 
   useEffect(() => {
@@ -71,6 +71,7 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
     } else {
       setTrackIndex((prev) => prev + 1)
       setCurrentTrack(tracks[trackIndex + 1])
+      audioRef.current.play()
     }
   }
 
