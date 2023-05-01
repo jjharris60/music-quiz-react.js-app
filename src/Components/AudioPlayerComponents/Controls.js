@@ -26,9 +26,12 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
     playAnimationRef.current = requestAnimationFrame(repeat)
   }, [audioRef, duration, progressBarRef, setTimeProgress]);
 
+  // audioRef.current.play();
+
   const [isPlaying, setIsPlaying] = useState(false);
   const togglePlayPause = () => {
     setIsPlaying((prev) => !prev);
+    // audioRef.current.play();
   };
 
   useEffect(() => {
@@ -105,6 +108,5 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
     </div>
   );
 };
-
 
 export default Controls;

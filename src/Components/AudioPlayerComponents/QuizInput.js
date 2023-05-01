@@ -59,9 +59,9 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     return (
         <div>
             <p className="input-elements">{currentTrack.question}</p>
-            <button id="next-button" style={{ display: 'none' }} onClick={nextTrack} />
+            <button id="next-button" style={{ display: 'none' }} onClick={nextTrack}>Next question</button>
             <input className="input-elements" id="input-field" type="text" value={inputValue} onChange={userInputHandler} />
-            <button className="input-elements" id="submit-button" style={{ display: 'block' }} onClick={checkYourAnwser} />
+            <button className="input-elements" id="submit-button" style={{ display: 'block' }} onClick={checkYourAnwser}>Submit anwser</button>
             {/* <p>Score:{scoreValue}</p> */}
         </div>
     )
