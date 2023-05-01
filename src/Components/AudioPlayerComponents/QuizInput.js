@@ -1,12 +1,14 @@
 import { useState } from "react"
 const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, trackIndex }) => {
     const [inputValue, newInputValue] = useState('')
+    // sets an initial input value of '' and a function to update the state
 
     const currentTrackAuthor = currentTrack.author
     // const currentTrackSource = currentTrack.src
 
-    const userInputHandler = onchange = (e) => {
-        return newInputValue(e.target.value)
+    const userInputHandler = onchange = (event) => {
+        // updates the new inputValue to whatever the user inputs into the <input> tag
+        return newInputValue(event.target.value)
     }
 
     const checkYourAnwser = () => {
@@ -20,7 +22,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
 
     return (
         <div>
-            <p>Question 1</p>
+            <p>{currentTrack.question}</p>
             <input id="input-field" type="text" value={inputValue} onChange={userInputHandler} />
             <button id="submit-button" onClick={checkYourAnwser} />
         </div>
