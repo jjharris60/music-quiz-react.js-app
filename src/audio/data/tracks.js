@@ -1,4 +1,4 @@
-import audioData from "../audio/creatingtrackarray";
+import audioData from "../data/creatingtrackarray";
 
 export const tracks = [
     {

@@ -1,5 +1,5 @@
-const audioTracksContext = require.context('./tracks', true, /\.webm$/);
-const audioThumbnailsContext = require.context('./images/track-images')
+const audioTracksContext = require.context('../tracks', true, /\.webm$/);
+const audioThumbnailsContext = require.context('../images/track-images');
 
 // The require.context is a method provided by Webpack, which is a module bundler for Javascript applications. In this context the require.context is used to import all the audio files in a specific folder and subdirectories that match the .webm file extension
 

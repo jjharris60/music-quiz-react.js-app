@@ -74,9 +74,9 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
     }
   }
 
-  // const volumeOnChange = onchange = (e) => {
-  //   setVolume(e.target.value);
-  // }
+  const volumeOnChange = onchange = (e) => {
+    setVolume(e.target.value);
+  }
 
   return (
     <div className="controls-wrapper">
@@ -99,11 +99,11 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
         </button>
       </div>
       <div className='volume'>
-        <input type='range' min={0} max={100} value={volume} onChange={(e) =>
-          setVolume(e.target.value)} />
+        <input type='range' min={0} max={100} value={volume} onChange={volumeOnChange} />
       </div>
     </div>
   );
 };
+
 
 export default Controls;

@@ -1,10 +1,11 @@
 import { useRef, useState } from 'react';
-import { tracks } from '../data/tracks';
+import { tracks } from '../../audio/data/tracks';
 
 // import components
 import DisplayTrack from './DisplayTrack';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
+import QuizInput from './QuizInput';
 
 const AudioPlayer = () => {
     const [trackIndex, setTrackIndex] = useState(0)
@@ -26,9 +27,10 @@ const AudioPlayer = () => {
                     setCurrentTrack,
                 }} />
                 <ProgressBar {...{ progressBarRef, audioRef, timeProgress, duration }} />
+                <QuizInput {...{ currentTrack, trackIndex, setTrackIndex, setCurrentTrack, tracks }} />
             </div>
         </div>
     );
 };
-export default AudioPlayer;
 
+export default AudioPlayer;

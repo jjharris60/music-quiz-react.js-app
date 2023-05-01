@@ -1,10 +1,10 @@
 import './styles/App.css'
-import Audio from './Components/AudioPlayer'
+import AudioPlayer from './Components/AudioPlayerComponents/AudioPlayer'
 
 const App = () => {
     return (
         <div>
-            <Audio />
+            <AudioPlayer />
         </div>
     )
 }
