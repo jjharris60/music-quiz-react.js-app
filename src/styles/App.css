@@ -1,3 +1,30 @@
 #welcometitle {
   font-size: 5rem;
 }
+
+.app {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  height: 100vh;
+}
+
+.audio-player {
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+button {
+  width: 150px;
+  height: 30px;
+  border-radius: 15px;
+  font-size: 1.25rem;
+}
+
+input {
+  width: 200px;
+  height: 30px;
+}

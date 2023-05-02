@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { tracks } from '../../audio/data/tracks';
+import { useNavigate } from 'react-router-dom';
 
 // import components
 import DisplayTrack from './DisplayTrack';
@@ -8,6 +9,7 @@ import ProgressBar from './ProgressBar';
 import QuizInput from './QuizInput';
 
 const AudioPlayer = () => {
+    const navigate = useNavigate();
     const [trackIndex, setTrackIndex] = useState(0)
     const [currentTrack, setCurrentTrack] = useState(tracks[trackIndex]);
     const [timeProgress, setTimeProgress] = useState(0);
@@ -18,6 +20,7 @@ const AudioPlayer = () => {
     const progressBarRef = useRef();
     return (
         <div className="audio-player">
+            <button onClick={() => navigate(-1)}>Home</button>
             <div className="inner">
                 <DisplayTrack {...{ currentTrack, audioRef, setDuration, progressBarRef }} />
                 <Controls {...{

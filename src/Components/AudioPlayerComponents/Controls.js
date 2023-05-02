@@ -15,7 +15,20 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
   const [volume, setVolume] = useState(20)
   const playAnimationRef = useRef();
 
+  // const repeat = useCallback(() => {
+  //   const currentTime = audioRef.current.currentTime;
+  //   setTimeProgress(currentTime)
+  //   progressBarRef.current.value = currentTime
+  //   progressBarRef.current.style.setProperty(
+  //     '--range-progress',
+  //     `${(progressBarRef.current.value / duration) * 100}%`
+  //   );
+  //   playAnimationRef.currentTime = requestAnimationFrame(repeat);
+  // }, [audioRef, duration, progressBarRef, setTimeProgress]);
+
   const repeat = useCallback(() => {
+    if (!audioRef.current) return;
+    // guard clause, which checks if audioRef.current is null or undefined and will return from the function without executing the rest of the code. This is so that a button to navigate back to home can execute without errors.
     const currentTime = audioRef.current.currentTime;
     setTimeProgress(currentTime)
     progressBarRef.current.value = currentTime
@@ -23,7 +36,7 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
       '--range-progress',
       `${(progressBarRef.current.value / duration) * 100}%`
     );
-    playAnimationRef.current = requestAnimationFrame(repeat)
+    playAnimationRef.current = requestAnimationFrame(repeat);
   }, [audioRef, duration, progressBarRef, setTimeProgress]);
 
   // audioRef.current.play();
@@ -40,7 +53,7 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
     } else {
       audioRef.current.pause();
     }
-    playAnimationRef.current = requestAnimationFrame(repeat);
+    playAnimationRef.currentTime = requestAnimationFrame(repeat);
   }, [isPlaying, audioRef, repeat]);
 
   useEffect(() => {
