@@ -1,7 +1,7 @@
 import { useState } from "react"
 const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, trackIndex, audioRef }) => {
     const [inputValue, newInputValue] = useState('')
-    // const [scoreValue, newScoreValue] = useState(0)
+    const [scoreValue, newScoreValue] = useState(0)
     // const classElements = Array.from(document.querySelectorAll('.track-info'));
     const thumbnail = document.getElementById('audio-image');
     const trackTitle = document.getElementById('song-title');
@@ -21,9 +21,9 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     // const currentTrackSource = currentTrack.src
     const currentTrackValues = [currentTrack.author, currentTrack.title]
     // Function for updating the user's input value
-    const userInputHandler = onchange = (event) => {
+    const userInputHandler = onchange = (userInputEvent) => {
         // updates the new inputValue to whatever the user inputs into the <input> tag
-        newInputValue(event.target.value)
+        newInputValue(userInputEvent.target.value)
     }
 
     // Function for checking if user's anwser is correct. Compares the string value from the <input> tag to the currentTrack's value's, such as author and title
@@ -40,6 +40,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             trackTitle.style.display = 'block'
             trackAuthor.style.display = 'block'
             submitButton.style.display = 'none'
+            newScoreValue(scoreValue + 1)
         } else {
             alert('Wrong answer, try again')
         }
@@ -60,9 +61,9 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
         <div>
             <p className="input-elements">{currentTrack.question}</p>
             <button id="next-button" style={{ display: 'none' }} onClick={nextTrack}>Next question</button>
-            <input className="input-elements" id="input-field" type="text" value={inputValue} onChange={userInputHandler} />
+            <input className="input-elements" id="input-field" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your anwser" />
             <button className="input-elements" id="submit-button" style={{ display: 'block' }} onClick={checkYourAnwser}>Submit anwser</button>
-            {/* <p>Score:{scoreValue}</p> */}
+            <p>Score:{scoreValue}</p>
         </div>
     )
 }
