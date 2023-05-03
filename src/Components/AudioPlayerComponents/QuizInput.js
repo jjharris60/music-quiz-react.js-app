@@ -3,7 +3,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     const [inputValue, newInputValue] = useState('')
     const [scoreValue, newScoreValue] = useState(0)
     // const classElements = Array.from(document.querySelectorAll('.track-info'));
-    const thumbnail = document.getElementById('audio-image');
+    const thumbnail = document.getElementById('track-cover');
     const trackTitle = document.getElementById('song-title');
     const trackAuthor = document.getElementById('song-author');
     const nextButton = document.getElementById('next-button');
@@ -40,9 +40,12 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             trackTitle.style.display = 'block'
             trackAuthor.style.display = 'block'
             submitButton.style.display = 'none'
+            newInputValue('')
             newScoreValue(scoreValue + 1)
         } else {
-            alert('Wrong answer, try again')
+            alert('wrong anwser')
+            // setTrackIndex((prev) => prev + 1)
+            // setCurrentTrack(tracks[trackIndex + 1])
         }
         console.log(checkYourAnwser)
     }
@@ -58,12 +61,12 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     }
 
     return (
-        <div>
+        <div className="quizinput">
             <p className="input-elements">{currentTrack.question}</p>
-            <button id="next-button" style={{ display: 'none' }} onClick={nextTrack}>Next question</button>
+            <button className="input-elements" id="next-button" style={{ display: 'none' }} onClick={nextTrack}>Next question</button>
             <input className="input-elements" id="input-field" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your anwser" />
             <button className="input-elements" id="submit-button" style={{ display: 'block' }} onClick={checkYourAnwser}>Submit anwser</button>
-            <p>Score:{scoreValue}</p>
+            <p className="input-elements">Score:{scoreValue}</p>
         </div>
     )
 }

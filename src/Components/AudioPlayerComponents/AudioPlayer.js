@@ -7,6 +7,7 @@ import DisplayTrack from './DisplayTrack';
 import Controls from './Controls';
 import ProgressBar from './ProgressBar';
 import QuizInput from './QuizInput';
+import Volume from './Volume';
 
 const AudioPlayer = () => {
     const navigate = useNavigate();
@@ -23,13 +24,16 @@ const AudioPlayer = () => {
             <button onClick={() => navigate(-1)}>Home</button>
             <div className="inner">
                 <DisplayTrack {...{ currentTrack, audioRef, setDuration, progressBarRef }} />
-                <Controls {...{
-                    audioRef, progressBarRef, duration, setTimeProgress, tracks,
-                    trackIndex,
-                    setTrackIndex,
-                    setCurrentTrack,
-                }} />
-                <ProgressBar {...{ progressBarRef, audioRef, timeProgress, duration }} />
+                <div id='audio-controls'>
+                    <Controls {...{
+                        audioRef, progressBarRef, duration, setTimeProgress, tracks,
+                        trackIndex,
+                        setTrackIndex,
+                        setCurrentTrack
+                    }} />
+                    <ProgressBar {...{ progressBarRef, audioRef, timeProgress, duration }} />
+                    <Volume {...{ audioRef }} />
+                </div>
                 <QuizInput {...{ audioRef, currentTrack, trackIndex, setTrackIndex, setCurrentTrack, tracks }} />
             </div>
         </div>

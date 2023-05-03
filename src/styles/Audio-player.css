@@ -1,0 +1,133 @@
+.audio-player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inner {
+  padding: 40px 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  /* align-items: center; */
+}
+
+p {
+  margin: 0;
+  text-align: center;
+}
+
+.audio-elements {
+  flex-direction: row;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.quizinput {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-elements {
+  margin: 40px 0 0 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#audio-image {
+  display: flex;
+  flex-direction: row;
+}
+
+#song-title {
+  margin: 20px 0 0 0;
+  flex-direction: row;
+}
+
+#song-author {
+  margin: 20px 0 0 0;
+  flex-direction: row;
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 20px;
+}
+
+#volume {
+  margin: 0 0 0 10px;
+  flex-direction: row;
+}
+
+.progress {
+  width: 90%;
+  margin: 0 0 0 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#time-current {
+  /* margin: 0 20px 0 0; */
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#volume-control {
+  width: 90%;
+  margin: 0 15px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#time {
+  /* margin: 0 0 0 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.controls button {
+  border: none;
+  background-color: transparent;
+  /* margin-right: 8px; */
+  cursor: pointer;
+}
+
+#audio-controls {
+  display: flex;
+  flex-direction: row;
+}
+
+.controls-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#playpausebtn {
+  padding: 0;
+}
+
+.volumeicons {
+  width: 20px;
+}
+
+#spacer {
+  margin: 0 10px 0 10px;
+}

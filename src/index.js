@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import './styles/progress-bar.css';
-import './styles/quiz-input.css';
-import './styles/home.css';
+import './styles/Progress-bar.css';
+import './styles/Quiz-input.css';
+import './styles/Home.css';
+import './styles/Audio-player.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // // import { createRoot } from 'react-dom/client';

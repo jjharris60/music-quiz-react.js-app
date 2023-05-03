@@ -9,19 +9,31 @@
   height: 100vh;
 }
 
-.audio-player {
-  display: flex;
-  flex-direction: column;
-  width: 800px;
-  justify-content: center;
-  /* align-items: center; */
-}
-
-button {
+/* button {
+  text-align: center;
   width: 150px;
   height: 30px;
   border-radius: 15px;
   font-size: 1.25rem;
+} */
+
+p {
+  font-size: 1.25rem;
+}
+
+/* button:hover {
+  cursor: pointer;
+  color: white;
+  background-color: rgb(100, 100, 100);
+} */
+
+/* button:active {
+  background-color: rgb(34, 33, 33);
+} */
+
+button svg {
+  padding: 5px 0 0 0;
+  font-size: 20px;
 }
 
 input {

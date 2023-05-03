@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-
 // icons
 import {
   // IoPlayBackSharp,
@@ -12,7 +11,7 @@ import {
 
 const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks, trackIndex, setTrackIndex, setCurrentTrack }) => {
 
-  const [volume, setVolume] = useState(20)
+  // const [volume, setVolume] = useState(20)
   const playAnimationRef = useRef();
 
   // const repeat = useCallback(() => {
@@ -32,12 +31,12 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
     const currentTime = audioRef.current.currentTime;
     setTimeProgress(currentTime)
     progressBarRef.current.value = currentTime
-    progressBarRef.current.style.setProperty(
-      '--range-progress',
-      `${(progressBarRef.current.value / duration) * 100}%`
-    );
+    // progressBarRef.current.style.setProperty(
+    //   '--range-progress',
+    //   `${(progressBarRef.current.value / duration) * 100}%`
+    // );
     playAnimationRef.current = requestAnimationFrame(repeat);
-  }, [audioRef, duration, progressBarRef, setTimeProgress]);
+  }, [audioRef, progressBarRef, setTimeProgress]);
 
   // audioRef.current.play();
 
@@ -58,10 +57,14 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
 
   useEffect(() => {
     if (audioRef) {
-      audioRef.current.volume = volume / 100;
+      // audioRef.current.volume = volume / 100;
+      audioRef.current.oncanplaythrough = () => {
+        audioRef.current.play();
+        setIsPlaying(true)
+      }
       // audioRef.current.muted = muteVolume;
     }
-  }, [volume, audioRef]);
+  }, [audioRef]);
 
   // Other onClick handlers
   // const skipForward = () => {
@@ -104,8 +107,7 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
         {/* <button onClick={skipBackward}>
           <IoPlayBackSharp />
         </button> */}
-
-        <button onClick={togglePlayPause}>
+        <button onClick={togglePlayPause} id='playpausebtn'>
           {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
         </button>
         {/* <button onClick={skipForward}>
@@ -115,9 +117,9 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
           <IoPlaySkipForwardSharp />
         </button> */}
       </div>
-      <div className='volume'>
+      {/* <div className='volume'>
         <input id='volume' type='range' max={100} value={volume} onChange={(volumeEvent) => setVolume(volumeEvent.target.value)} />
-      </div>
+      </div> */}
     </div>
   );
 };
