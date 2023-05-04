@@ -1,12 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import './styles/Progress-bar.css';
-import './styles/Quiz-input.css';
-import './styles/Home.css';
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import './styles/Progress-bar.css'
+import './styles/Home.css'
 import './styles/Audio-player.css'
-import App from './App';
+import App from './App'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import reportWebVitals from './reportWebVitals';
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
 // // import { createRoot } from 'react-dom/client';
 // import { BrowserRouter } from 'react-router-dom';
 
