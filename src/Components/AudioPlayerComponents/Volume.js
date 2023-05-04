@@ -4,10 +4,12 @@ import VolumeUp from '../../audio/images/volume_up.svg'
 
 const Volume = ({ audioRef }) => {
     const [volume, setVolume] = useState(20);
+    // const [muteVolume, setMuteVolume] = useState(false);
 
     useEffect(() => {
         if (audioRef) {
             audioRef.current.volume = volume / 100;
+            // audioRef.current.muted = muteVolume;
         }
     })
     return (

@@ -61,5 +61,6 @@ export const tracks = [
         src: audioData.audioFiles[8],
         author: 'Rascal Flatts',
         thumbnail: audioData.audioThumbnails[8]
+
     },
 ]

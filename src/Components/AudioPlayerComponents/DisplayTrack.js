@@ -8,7 +8,7 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef }) =
         <div>
             <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata} autoPlay />
             <div className="track-info" id="audio-image">
-                <img alt="track-cover" src={currentTrack.thumbnail} style={{ display: 'none', width: 500 }} id="track-cover" />
+                <img alt="track-cover" src={currentTrack.thumbnail} style={{ display: 'none', width: 200 }} id="track-cover" />
             </div>
             <div className="track-info" id="audio-text" >
                 <p className="track-info" id="song-title" style={{ display: 'none' }}>{currentTrack.title}</p>
