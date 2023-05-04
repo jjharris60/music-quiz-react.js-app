@@ -15,10 +15,10 @@ const AudioPlayer = () => {
     const [currentTrack, setCurrentTrack] = useState(tracks[trackIndex]);
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
-
     // reference
     const audioRef = useRef();
     const progressBarRef = useRef();
+
     return (
         <div className="audio-player">
             <button onClick={() => navigate(-1)}>Home</button>
