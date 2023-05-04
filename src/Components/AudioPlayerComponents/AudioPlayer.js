@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react';
 import { tracks } from '../../audio/data/tracks';
 import { useNavigate } from 'react-router-dom';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 // import components
 import DisplayTrack from './DisplayTrack';
@@ -21,7 +24,7 @@ const AudioPlayer = () => {
 
     return (
         <div className="audio-player">
-            <button onClick={() => navigate(-1)}>Home</button>
+            {/* <button onClick={() => navigate(-1)}>Home</button> */}
             <div className="inner">
                 <DisplayTrack {...{ currentTrack, audioRef, setDuration, progressBarRef }} />
                 <div id='audio-controls'>
@@ -38,6 +41,15 @@ const AudioPlayer = () => {
             </div>
         </div>
     );
+    // return (
+    //     <Container>
+    //         <Row>
+    //             <Col>
+    //                 <DisplayTrack {...{ currentTrack, audioRef, setDuration, progressBarRef }} />
+    //             </Col>
+    //         </Row>
+    //     </Container>
+    // )
 };
 
 export default AudioPlayer;

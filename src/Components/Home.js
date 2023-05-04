@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -27,7 +26,7 @@ const Home = () => {
                 </Row>
                 <Row className='d-flex mt-4'>
                     <Col className='col-12 d-flex justify-content-center'>
-                        <Button onClick={() => navigate("/audioplayer")}>Ready to play</Button>
+                        <button id='button-custom' onClick={() => navigate("/audioplayer")}>Ready to play</button>
                     </Col>
                 </Row>
 
