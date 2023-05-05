@@ -2,17 +2,14 @@ import { useState } from "react"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Card } from "react-bootstrap";
+// import { Card } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, trackIndex, audioRef }) => {
     const [inputValue, newInputValue] = useState('')
     const [scoreValue, newScoreValue] = useState(0)
-    // const classElements = Array.from(document.querySelectorAll('.track-info'));
-    const thumbnail = document.getElementById('track-cover');
-    const trackTitle = document.getElementById('song-title');
-    const trackAuthor = document.getElementById('song-author');
-    const nextButton = document.getElementById('next-button');
-    const submitButton = document.getElementById('submit-button');
+    const Thumbnail = document.getElementById('track-cover')
+    const TrackInfo = document.getElementById('tracktext1')
+    const TrackInfo1 = document.getElementById('tracktext2')
 
     // classElements.forEach(element => {
     //     element.style.display = 'none'
@@ -34,17 +31,15 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     // Function for checking if user's anwser is correct. Compares the string value from the <input> tag to the currentTrack's value's, such as author and title
     const checkYourAnwser = () => {
         if (inputValue === currentTrackValues[0] || inputValue === currentTrackValues[1]) {
-            thumbnail.style.display = 'block'
+            Thumbnail.style.filter = 'blur(0)'
+            TrackInfo.style.display = 'block'
+            TrackInfo1.style.display = 'block'
             // classElements.forEach(element => {
             //     element.style.display = 'block'
             // });
             // inputClassElements.forEach(element => {
             //     element.style.display = 'none'
             // });
-            nextButton.style.display = 'block'
-            trackTitle.style.display = 'block'
-            trackAuthor.style.display = 'block'
-            submitButton.style.display = 'none'
             newInputValue('')
             newScoreValue(scoreValue + 1)
         } else {
@@ -56,13 +51,12 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     }
 
     const nextTrack = () => {
-        nextButton.style.display = 'none'
-        thumbnail.style.display = 'none'
-        trackTitle.style.display = 'none'
-        trackAuthor.style.display = 'none'
+        // nextButton.style.display = 'none'
+        // thumbnail.style.display = 'none'
+        // trackTitle.style.display = 'none'
+        // trackAuthor.style.display = 'none'
         setTrackIndex((prev) => prev + 1)
         setCurrentTrack(tracks[trackIndex + 1])
-        submitButton.style.display = 'block'
     }
 
     // return (
@@ -75,42 +69,40 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     //     </div>
     // )
     return (
-        <Card className="quizinputcard pt-3 pb-3">
-            <Container className='d-flex justfiy-content-center'>
-                <Col>
-                    <Row className='d-flex justify-content-center'>
-                        <Col>
-                            <Row>
-                                <p className="quizinputtext m-0 p-0">{currentTrack.question}</p>
-                            </Row>
-                        </Col>
-                    </Row>
-                    <Row className='d-flex justify-content-center mt-3'>
-                        <Col className='d-flex justify-content-center'>
-                            <Row>
-                                {/* <button onClick={nextTrack} className="button-custom1">Next question</button> */}
-                                <Button onClick={nextTrack} className="btn custom-button-1">Next question</Button>
-                            </Row>
-                        </Col>
-                    </Row>
-                    <Row className='d-flex justify-content-center mt-3'>
-                        <Col className='col-6'>
-                            <Row>
-                                <input className="input-elements" id="input-field" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your anwser" />
-                            </Row>
-                        </Col>
-                    </Row>
-                    <Row className='d-flex justify-content-center mt-3'>
-                        <Col className='d-flex justify-content-center'>
-                            <Row>
-                                {/* <button onClick={checkYourAnwser} className="button-custom1">Submit answer</button> */}
-                                <Button onClick={checkYourAnwser} className="btn custom-button-1">Submit answer</Button>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Col>
-            </Container>
-        </Card>
+        <Container className='d-flex justfiy-content-center'>
+            <Col>
+                <Row className='d-flex justify-content-center'>
+                    <Col>
+                        <Row>
+                            <p className="quizinputtext m-0 p-0">{currentTrack.question}</p>
+                        </Row>
+                    </Col>
+                </Row>
+                <Row className='d-flex justify-content-center mt-3'>
+                    <Col className='col-6'>
+                        <Row className="d-flex justify-content-center">
+                            <input className="input-elements" id="input-field" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your anwser" />
+                        </Row>
+                    </Col>
+                </Row>
+                <Row className='d-flex justify-content-center mt-3'>
+                    <Col className='d-flex justify-content-center'>
+                        <Row>
+                            {/* <button onClick={checkYourAnwser} className="button-custom1">Submit answer</button> */}
+                            <Button onClick={checkYourAnwser} className="btn btn-sm custom-button-1" id="submitanswer">Submit answer</Button>
+                        </Row>
+                    </Col>
+                </Row>
+                <Row className='d-flex justify-content-center mt-3'>
+                    <Col className='d-flex justify-content-center'>
+                        <Row>
+                            {/* <button onClick={nextTrack} className="button-custom1">Next question</button> */}
+                            <Button onClick={nextTrack} className="btn btn-sm custom-button-1" id="nextquestion">Next question</Button>
+                        </Row>
+                    </Col>
+                </Row>
+            </Col>
+        </Container>
     )
 
 

@@ -1,8 +1,10 @@
+import { Row, Col, Container } from "react-bootstrap";
+
 const ProgressBar = ({ progressBarRef, audioRef, timeProgress, duration }) => {
     const handleProgressChange = () => {
         audioRef.current.currentTime = progressBarRef.current.value
     }
-    // Formatting the time
+
     const formatTime = (time) => {
         if (time && !isNaN(time)) {
             const minutes = Math.floor(time / 60);
@@ -17,20 +19,31 @@ const ProgressBar = ({ progressBarRef, audioRef, timeProgress, duration }) => {
     };
 
     return (
-        <div className="progress">
-            <div id="volume-control">
-                <input type="range" ref={progressBarRef} defaultValue={0} onChange={handleProgressChange} id="progressbar" />
-            </div>
-            <div id="time-current">
-                <span className="time-current">{formatTime(timeProgress)}</span>
-            </div>
-            <p id="spacer">/</p>
-            <div id="time">
-                <span className="time">{formatTime(duration)}</span>
-            </div>
-        </div>
-
-
+        <Container className="progressbarcontainer">
+            <Row>
+                <Col className="d-flex align-items-center">
+                    <input type="range" ref={progressBarRef} defaultValue={0} onChange={handleProgressChange} id="progressbar" />
+                    <span className="ps-2 pb-1 time-current">{formatTime(timeProgress)}/{formatTime(duration)}</span>
+                </Col>
+                {/* <Col className="d-flex align-items-center col-3 p-0 mb-1">
+                    <span className="time-current">{formatTime(timeProgress)}/{formatTime(duration)}</span>
+                </Col> */}
+            </Row>
+        </Container>
     )
+    // return (
+    //     <Container fluid className="p-0">
+    //         <Col>
+    //             <Row>
+    //                 <Col className="d-flex align-items-center p-0 col-9">
+    //                     <input type="range" ref={progressBarRef} defaultValue={0} onChange={handleProgressChange} id="progressbar" />
+    //                 </Col>
+    //                 <Col className="d-flex align-items-center p-0 ps-3 col-3">
+    //                     <p className="time-current m-0">{formatTime(timeProgress)}/{formatTime(duration)}</p>
+    //                 </Col>
+    //             </Row>
+    //         </Col>
+    //     </Container>
+    // )
 };
 export default ProgressBar

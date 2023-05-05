@@ -12,8 +12,17 @@ p {
   font-style: normal;
 }
 
+svg {
+  margin-bottom: 5px !important;
+}
+
 .tracktext {
+  color: rgb(44, 40, 40);
   margin: 0;
   font-size: 0.875rem;
   text-align: center;
+}
+
+#input-field {
+  width: auto;
 }

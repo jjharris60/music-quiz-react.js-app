@@ -9,31 +9,27 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef }) =
         progressBarRef.current.max = seconds;
     };
     return (
-        <Container className='d-flex justfiy-content-center'>
-            <Col>
-                <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
-                <Row className='d-flex justify-content-center mt-4'>
-                    <Col className='d-flex justify-content-center col-12'>
-                        <Row>
-                            <img alt='track-cover' src={currentTrack.thumbnail} style={{ width: '400px', display: 'block' }} />
-                        </Row>
-                    </Col>
-                </Row>
-                <Row className='d-flex justify-content-center'>
-                    <Col className='col-12'>
-                        <Row>
-                            <p className='tracktext'>{currentTrack.title}</p>
-                        </Row>
-                    </Col>
-                </Row>
-                <Row className='d-flex justify-content-center mt-2'>
-                    <Col className='col-12'>
-                        <Row>
-                            <p className='tracktext'>{currentTrack.author}</p>
-                        </Row>
-                    </Col>
-                </Row>
-            </Col>
+        <Container fluid className='displaytrackcontainer'>
+            <Row>
+                <Col>
+                    <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
+                    <Row className='mt-4'>
+                        <Col className='d-flex justify-content-center'>
+                            <img id='track-cover' alt='track-cover' src={currentTrack.thumbnail} style={{ width: '300px', filter: 'blur(40px)' }} />
+                        </Col>
+                    </Row>
+                    <Row className='mt-3'>
+                        <Col>
+                            <p id='tracktext1' className='tracktext' style={{ display: 'none' }}>{currentTrack.title}</p>
+                        </Col>
+                    </Row>
+                    <Row className='mt-2'>
+                        <Col>
+                            <p id='tracktext2' className='tracktext' style={{ display: 'none' }}>{currentTrack.author}</p>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
         </Container>
     )
     // return (

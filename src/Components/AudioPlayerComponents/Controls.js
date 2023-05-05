@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 // icons
 import {
-  // IoPlayBackSharp,
+  IoPlayBackSharp,
   // IoPlayForwardSharp,
   // IoPlaySkipBackSharp,
   // IoPlaySkipForwardSharp,
@@ -70,9 +70,9 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
   // const skipForward = () => {
   //   audioRef.current.currentTime += 15;
   // }
-  // const skipBackward = () => {
-  //   audioRef.current.currentTime -= 15;
-  // }
+  const skipBackward = () => {
+    audioRef.current.currentTime -= 15;
+  }
   // const handlePrevious = () => {
   //   if (trackIndex === 0) {
   //     let lastTrackIndex = tracks.length - 1;
@@ -98,30 +98,40 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
   //   setVolume(e.target.value);
   // }
 
+  // return (
+  //   <div className="controls-wrapper">
+  //     <div className="controls">
+  //       {/* <button>
+  //         <IoPlaySkipBackSharp onClick={handlePrevious} />
+  //       </button> */}
+  //       {/* <button onClick={skipBackward}>
+  // <IoPlayBackSharp />
+  //       </button> */}
+  // <button onClick={togglePlayPause} id='playpausebtn'>
+  //   {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
+  // </button>
+  //       {/* <button onClick={skipForward}>
+  //         <IoPlayForwardSharp />
+  //       </button> */}
+  //       {/* <button onClick={handleNext}>
+  //         <IoPlaySkipForwardSharp />
+  //       </button> */}
+  //     </div>
+  //     {/* <div className='volume'>
+  //       <input id='volume' type='range' max={100} value={volume} onChange={(volumeEvent) => setVolume(volumeEvent.target.value)} />
+  //     </div> */}
+  //   </div>
+  // );
   return (
-    <div className="controls-wrapper">
-      <div className="controls">
-        {/* <button>
-          <IoPlaySkipBackSharp onClick={handlePrevious} />
-        </button> */}
-        {/* <button onClick={skipBackward}>
-          <IoPlayBackSharp />
-        </button> */}
-        <button onClick={togglePlayPause} id='playpausebtn'>
-          {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
-        </button>
-        {/* <button onClick={skipForward}>
-          <IoPlayForwardSharp />
-        </button> */}
-        {/* <button onClick={handleNext}>
-          <IoPlaySkipForwardSharp />
-        </button> */}
-      </div>
-      {/* <div className='volume'>
-        <input id='volume' type='range' max={100} value={volume} onChange={(volumeEvent) => setVolume(volumeEvent.target.value)} />
-      </div> */}
-    </div>
-  );
+    <>
+      <button className='ps-0 playpausebtn' onClick={skipBackward}>
+        <IoPlayBackSharp />
+      </button>
+      <button onClick={togglePlayPause} className='playpausebtn p-0' id='playpausebtn'>
+        {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
+      </button>
+    </>
+  )
 };
 
 export default Controls;
