@@ -9,25 +9,25 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef }) =
         progressBarRef.current.max = seconds;
     };
     return (
-        <Container fluid className='d-flex justfiy-content-center'>
+        <Container className='d-flex justfiy-content-center'>
             <Col>
                 <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
                 <Row className='d-flex justify-content-center mt-4'>
-                    <Col className='col-4'>
+                    <Col className='d-flex justify-content-center col-12'>
                         <Row>
-                            <img alt='track-cover' src={currentTrack.thumbnail} style={{ display: 'block' }} />
+                            <img alt='track-cover' src={currentTrack.thumbnail} style={{ width: '400px', display: 'block' }} />
                         </Row>
                     </Col>
                 </Row>
-                <Row className='d-flex justify-content-center mt-4'>
-                    <Col className='col-3'>
+                <Row className='d-flex justify-content-center'>
+                    <Col className='col-12'>
                         <Row>
                             <p className='tracktext'>{currentTrack.title}</p>
                         </Row>
                     </Col>
                 </Row>
                 <Row className='d-flex justify-content-center mt-2'>
-                    <Col className='col-3'>
+                    <Col className='col-12'>
                         <Row>
                             <p className='tracktext'>{currentTrack.author}</p>
                         </Row>

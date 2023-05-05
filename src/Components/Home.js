@@ -26,7 +26,7 @@ const Home = () => {
                 </Row>
                 <Row className='d-flex mt-4'>
                     <Col className='col-12 d-flex justify-content-center'>
-                        <button id='button-custom' onClick={() => navigate("/audioplayer")}>Ready to play</button>
+                        <button className='button-custom' onClick={() => navigate("/audioplayer")}>Ready to play</button>
                     </Col>
                 </Row>
 

@@ -1,0 +1,21 @@
+.quizinputtext {
+  text-align: center;
+}
+
+.custom-button-1 {
+  width: auto !important;
+  border-color: transparent !important;
+  border-radius: 30px !important;
+  /* border-radius: 40px !important; */
+  color: rgb(242, 236, 236) !important;
+  background-color: rgb(73, 73, 73) !important;
+}
+
+.custom-button-1:hover {
+  /* border-radius: 40px !important; */
+  color: rgb(242, 236, 236) !important;
+  background-color: rgb(29, 26, 26) !important;
+}
+
+.quizinputcard {
+}
