@@ -3,13 +3,27 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 // import { Card } from "react-bootstrap";
+import { useNavigate } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, trackIndex, audioRef }) => {
+    const navigate = useNavigate()
     const [inputValue, newInputValue] = useState('')
     const [scoreValue, newScoreValue] = useState(0)
     const Thumbnail = document.getElementById('track-cover')
     const TrackInfo = document.getElementById('tracktext1')
     const TrackInfo1 = document.getElementById('tracktext2')
+    const submitAnswer = document.getElementById('submitanswer')
+    const nextQuestion = document.getElementById('nextquestion')
+    const currentTrackQ = document.getElementById('currenttrackq')
+    const correctAnswer = document.getElementById('correctanswer')
+    const inputField = document.getElementById('inputfield')
+    const audioPlayerRow = document.getElementById('audioplayerrow')
+    const finishQuiz = document.getElementById('finishquiz')
+    const lastTrack = tracks[tracks.length - 1]
+    const lastSrc = lastTrack.src
+    // console.log(currentTrack.src)
+    // const lastSrc = lastTrack.src;
 
     // classElements.forEach(element => {
     //     element.style.display = 'none'
@@ -34,15 +48,22 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             Thumbnail.style.filter = 'blur(0)'
             TrackInfo.style.display = 'block'
             TrackInfo1.style.display = 'block'
+            submitAnswer.style.display = 'none'
+            nextQuestion.style.display = 'block'
+            correctAnswer.style.display = 'block'
+            currentTrackQ.style.display = 'none'
+            inputField.style.display = 'none'
+            audioPlayerRow.style.display = 'none'
             // classElements.forEach(element => {
             //     element.style.display = 'block'
             // });
             // inputClassElements.forEach(element => {
             //     element.style.display = 'none'
             // });
+            audioRef.current.pause()
             newInputValue('')
             newScoreValue(scoreValue + 1)
-        } else {
+        } else if (inputValue !== currentTrackValues[0] || inputValue !== currentTrackValues[1]) {
             alert('wrong anwser')
             // setTrackIndex((prev) => prev + 1)
             // setCurrentTrack(tracks[trackIndex + 1])
@@ -51,12 +72,23 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     }
 
     const nextTrack = () => {
-        // nextButton.style.display = 'none'
-        // thumbnail.style.display = 'none'
-        // trackTitle.style.display = 'none'
-        // trackAuthor.style.display = 'none'
-        setTrackIndex((prev) => prev + 1)
-        setCurrentTrack(tracks[trackIndex + 1])
+        if (currentTrack.src === lastSrc) {
+            nextQuestion.style.display = 'none'
+            finishQuiz.style.display = 'block'
+        }
+        else {
+            Thumbnail.style.filter = 'blur(40px)'
+            TrackInfo.style.display = 'none'
+            TrackInfo1.style.display = 'none'
+            submitAnswer.style.display = 'block'
+            nextQuestion.style.display = 'none'
+            correctAnswer.style.display = 'none'
+            currentTrackQ.style.display = 'block'
+            inputField.style.display = 'block'
+            audioPlayerRow.style.display = 'block'
+            setTrackIndex((prev) => prev + 1)
+            setCurrentTrack(tracks[trackIndex + 1])
+        }
     }
 
     // return (
@@ -74,14 +106,15 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 <Row className='d-flex justify-content-center'>
                     <Col>
                         <Row>
-                            <p className="quizinputtext m-0 p-0">{currentTrack.question}</p>
+                            <p id="currenttrackq" className="quizinputtext m-0 p-0" style={{ display: 'block' }}>{currentTrack.question}</p>
+                            <p id="correctanswer" className="quizinputtext m-0" style={{ display: 'none', fontSize: '2rem' }}>Correct answer!</p>
                         </Row>
                     </Col>
                 </Row>
                 <Row className='d-flex justify-content-center mt-3'>
-                    <Col className='col-6'>
+                    <Col className='col-lg-3 col-8'>
                         <Row className="d-flex justify-content-center">
-                            <input className="input-elements" id="input-field" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your anwser" />
+                            <input className="input-elements" id="inputfield" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your anwser" style={{ display: 'block' }} />
                         </Row>
                     </Col>
                 </Row>
@@ -89,15 +122,16 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                     <Col className='d-flex justify-content-center'>
                         <Row>
                             {/* <button onClick={checkYourAnwser} className="button-custom1">Submit answer</button> */}
-                            <Button onClick={checkYourAnwser} className="btn btn-sm custom-button-1" id="submitanswer">Submit answer</Button>
+                            <Button onClick={checkYourAnwser} className="btn btn-md custom-button-1" id="submitanswer" style={{ display: 'block' }}>Submit answer</Button>
                         </Row>
                     </Col>
                 </Row>
-                <Row className='d-flex justify-content-center mt-3'>
+                <Row className='d-flex justify-content-center mt-2'>
                     <Col className='d-flex justify-content-center'>
                         <Row>
                             {/* <button onClick={nextTrack} className="button-custom1">Next question</button> */}
-                            <Button onClick={nextTrack} className="btn btn-sm custom-button-1" id="nextquestion">Next question</Button>
+                            <Button onClick={nextTrack} className="btn btn-md custom-button-1" id="nextquestion" style={{ display: 'none' }}>Next question</Button>
+                            <button id="finishquiz" className='btn btn-md custom-button-1' onClick={() => navigate("/home")} style={{ display: 'none' }}>Back to the Start</button>
                         </Row>
                     </Col>
                 </Row>

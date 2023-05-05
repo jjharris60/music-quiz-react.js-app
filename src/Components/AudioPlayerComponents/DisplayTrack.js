@@ -3,16 +3,16 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef }) => {
-    const onLoadedMetadata = () => {
-        const seconds = audioRef.current.duration;
-        setDuration(seconds);
-        progressBarRef.current.max = seconds;
-    };
+    // const onLoadedMetadata = () => {
+    //     const seconds = audioRef.current.duration;
+    //     setDuration(seconds);
+    //     progressBarRef.current.max = seconds;
+    // };
     return (
         <Container fluid className='displaytrackcontainer'>
             <Row>
                 <Col>
-                    <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
+                    <audio src={currentTrack.src} ref={audioRef}></audio>
                     <Row className='mt-4'>
                         <Col className='d-flex justify-content-center'>
                             <img id='track-cover' alt='track-cover' src={currentTrack.thumbnail} style={{ width: '300px', filter: 'blur(40px)' }} />

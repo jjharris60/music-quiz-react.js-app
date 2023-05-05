@@ -6,6 +6,10 @@
   background-color: beige;
 }
 
+.time-current {
+  font-size: 0.875rem;
+}
+
 .custom-button-1 {
   width: auto !important;
   border-color: transparent !important;
@@ -24,4 +28,8 @@
 .playpausebtn {
   background-color: transparent !important;
   border: 0 !important;
+}
+
+svg {
+  width: 20px;
 }

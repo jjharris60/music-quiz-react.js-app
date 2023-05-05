@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 // icons
 import {
   IoPlayBackSharp,
-  // IoPlayForwardSharp,
+  IoPlayForwardSharp,
   // IoPlaySkipBackSharp,
   // IoPlaySkipForwardSharp,
   IoPlaySharp,
@@ -30,13 +30,13 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
     // guard clause, which checks if audioRef.current is null or undefined and will return from the function without executing the rest of the code. This is so that a button to navigate back to home can execute without errors.
     const currentTime = audioRef.current.currentTime;
     setTimeProgress(currentTime)
-    progressBarRef.current.value = currentTime
+    // progressBarRef.current.value = currentTime
     // progressBarRef.current.style.setProperty(
     //   '--range-progress',
     //   `${(progressBarRef.current.value / duration) * 100}%`
     // );
     playAnimationRef.current = requestAnimationFrame(repeat);
-  }, [audioRef, progressBarRef, setTimeProgress]);
+  }, [audioRef, setTimeProgress]);
 
   // audioRef.current.play();
 
@@ -67,9 +67,9 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
   }, [audioRef]);
 
   // Other onClick handlers
-  // const skipForward = () => {
-  //   audioRef.current.currentTime += 15;
-  // }
+  const skipForward = () => {
+    audioRef.current.currentTime += 15;
+  }
   const skipBackward = () => {
     audioRef.current.currentTime -= 15;
   }
@@ -129,6 +129,9 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
       </button>
       <button onClick={togglePlayPause} className='playpausebtn p-0' id='playpausebtn'>
         {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
+      </button>
+      <button className='ps-2 pe-0 playpausebtn' onClick={skipForward}>
+        <IoPlayForwardSharp />
       </button>
     </>
   )

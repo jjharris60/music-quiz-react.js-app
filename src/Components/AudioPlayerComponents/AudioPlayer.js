@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 // import components
 import DisplayTrack from './DisplayTrack';
 import Controls from './Controls';
-import ProgressBar from './ProgressBar';
+// import ProgressBar from './ProgressBar';
 import QuizInput from './QuizInput';
 // import Volume from './Volume';
 
@@ -23,27 +23,27 @@ const AudioPlayer = () => {
     const progressBarRef = useRef();
 
     return (
-        <Container fluid>
+        <Container fluid className='vh-100 d-flex align-items-center'>
             <Col className='maincolumn'>
-                <Row className='justify-content-center mt-4'>
+                <Row className='justify-content-center'>
                     <Col className='col-8'>
                         <DisplayTrack {...{ currentTrack, audioRef, setDuration, progressBarRef }} />
                     </Col>
                 </Row>
-                <Row className='justify-content-center mt-4'>
-                    <Col className='col-lg-8 col-8'>
+                <Row className='d-flex justify-content-center mt-4'>
+                    <Col id="audioplayerrow" className='col-lg-8 col-8' style={{ display: 'block' }}>
                         <Row className='justify-content-center'>
                             <Col className='d-flex justify-content-end col-1 p-0'>
                                 <Controls {...{
-                                    audioRef, progressBarRef, duration, setTimeProgress, tracks,
+                                    audioRef, progressBarRef, duration, timeProgress, setTimeProgress, tracks,
                                     trackIndex,
                                     setTrackIndex,
                                     setCurrentTrack
                                 }} />
                             </Col>
-                            <Col className='col-11 p-0'>
+                            {/* <Col className='col-10 p-0'>
                                 <ProgressBar {...{ progressBarRef, audioRef, timeProgress, duration }} />
-                            </Col>
+                            </Col> */}
                             {/* <Col className='col-2 d-flex align-items-center'>
                                 <Volume {...{ audioRef }} />
                             </Col> */}

@@ -21,9 +21,11 @@ const ProgressBar = ({ progressBarRef, audioRef, timeProgress, duration }) => {
     return (
         <Container className="progressbarcontainer">
             <Row>
-                <Col className="d-flex align-items-center">
+                <Col className="d-flex align-items-center col">
                     <input type="range" ref={progressBarRef} defaultValue={0} onChange={handleProgressChange} id="progressbar" />
-                    <span className="ps-2 pb-1 time-current">{formatTime(timeProgress)}/{formatTime(duration)}</span>
+                    <p className="ps-3 pe-1 m-0 time-current">{formatTime(timeProgress)}</p>
+                    <p className="m-0">/</p>
+                    <p className="time-current m-0 ps-1">{formatTime(duration)}</p>
                 </Col>
                 {/* <Col className="d-flex align-items-center col-3 p-0 mb-1">
                     <span className="time-current">{formatTime(timeProgress)}/{formatTime(duration)}</span>
