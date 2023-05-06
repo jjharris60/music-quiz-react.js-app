@@ -2,6 +2,7 @@ import { useRef, useMemo, useCallback, useState } from "react"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+// import { Card } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 
@@ -60,7 +61,10 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     // }
 
     const checkYourAnwser = useCallback(() => {
-        if (inputValue === currentTrackValues[0] || inputValue === currentTrackValues[1]) {
+        if (inputValue.toLowerCase() === currentTrackValues[0].toLowerCase() ||
+            inputValue.toUpperCase() === currentTrackValues[0].toUpperCase() ||
+            inputValue.toLowerCase() === currentTrackValues[1].toLowerCase() ||
+            inputValue.toUpperCase() === currentTrackValues[1].toUpperCase()) {
             thumbnail.current.style.filter = 'blur(0)';
             trackText.current.style.display = 'block';
             trackText1.current.style.display = 'block';
@@ -73,7 +77,26 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             audioRef.current.pause();
             newInputValue('');
             newScoreValue(scoreValue + 1);
-        } else if (inputValue !== currentTrackValues[0] || inputValue !== currentTrackValues[1]) {
+            if (inputValue === '') {
+                alert('Type your guess into the text box')
+            }
+            if (currentTrack.src === lastSrc) {
+                nextQuestion.current.style.display = 'none'
+                finishQuiz.current.style.display = 'block'
+                thumbnail.current.style.display = 'block'
+                trackText.current.style.display = 'block';
+                trackText1.current.style.display = 'block';
+                submitAnswer.current.style.display = 'none';
+                nextQuestion.current.style.display = 'none';
+                currentTrackQ.current.style.display = 'none';
+                inputField.current.style.display = 'none';
+                incorrectAnswer.current.style.display = 'block';
+                audioPlayerRow.current.style.display = 'none';
+            }
+        } else if (inputValue.toLowerCase() === currentTrackValues[0].toLowerCase() ||
+            inputValue.toUpperCase() === currentTrackValues[0].toUpperCase() ||
+            inputValue.toLowerCase() === currentTrackValues[1].toLowerCase() ||
+            inputValue.toUpperCase() === currentTrackValues[1].toUpperCase()) {
             thumbnail.current.style.filter = 'blur(0)';
             trackText.current.style.display = 'block';
             trackText1.current.style.display = 'block';
@@ -85,28 +108,44 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             audioPlayerRow.current.style.display = 'none';
             audioRef.current.pause();
             newInputValue('');
+            if (inputValue === '') {
+                alert('Type your guess into the text box')
+            }
+            if (currentTrack.src === lastSrc) {
+                nextQuestion.current.style.display = 'none'
+                finishQuiz.current.style.display = 'block'
+                thumbnail.current.style.display = 'block'
+                trackText.current.style.display = 'block';
+                trackText1.current.style.display = 'block';
+                submitAnswer.current.style.display = 'none';
+                nextQuestion.current.style.display = 'none';
+                currentTrackQ.current.style.display = 'none';
+                inputField.current.style.display = 'none';
+                incorrectAnswer.current.style.display = 'block';
+                audioPlayerRow.current.style.display = 'none';
+            }
         }
-    }, [inputValue, currentTrackValues, thumbnail, trackText, trackText1, submitAnswer, nextQuestion, currentTrackQ, correctAnswer, inputField, audioPlayerRow, audioRef, newInputValue, newScoreValue, scoreValue]);
+    }, [inputValue, currentTrackValues, thumbnail, trackText, trackText1, submitAnswer, nextQuestion, currentTrackQ, correctAnswer, inputField, audioPlayerRow, audioRef, newInputValue, newScoreValue, scoreValue, currentTrack.src, finishQuiz, lastSrc]);
 
     const nextTrack = useCallback(() => {
-        if (currentTrack.src === lastSrc) {
-            nextQuestion.current.style.display = 'none'
-            finishQuiz.current.style.display = 'block'
-        } else {
-            thumbnail.current.style.filter = 'blur(40px)'
-            trackText.current.style.display = 'none'
-            trackText1.current.style.display = 'none'
-            submitAnswer.current.style.display = 'block'
-            nextQuestion.current.style.display = 'none'
-            currentTrackQ.current.style.display = 'block'
-            correctAnswer.current.style.display = 'none'
-            inputField.current.style.display = 'block'
-            incorrectAnswer.current.style.display = 'none'
-            audioPlayerRow.current.style.display = 'block'
-            setTrackIndex((prev) => prev + 1)
-            setCurrentTrack(tracks[trackIndex + 1])
-        }
-    }, [nextQuestion, finishQuiz, thumbnail, trackText, trackText1, submitAnswer, currentTrackQ, correctAnswer, inputField, incorrectAnswer, audioPlayerRow, setTrackIndex, setCurrentTrack, currentTrack.src, lastSrc, trackIndex, tracks])
+        // console.log(currentTrack.src, lastSrc);
+        // if (currentTrack.src === lastSrc) {
+        //     nextQuestion.current.style.display = 'none'
+        //     finishQuiz.current.style.display = 'block'
+        // } else {
+        thumbnail.current.style.filter = 'blur(40px)'
+        trackText.current.style.display = 'none'
+        trackText1.current.style.display = 'none'
+        submitAnswer.current.style.display = 'block'
+        nextQuestion.current.style.display = 'none'
+        currentTrackQ.current.style.display = 'block'
+        correctAnswer.current.style.display = 'none'
+        inputField.current.style.display = 'block'
+        incorrectAnswer.current.style.display = 'none'
+        audioPlayerRow.current.style.display = 'block'
+        setTrackIndex((prev) => prev + 1)
+        setCurrentTrack(tracks[trackIndex + 1])
+    }, [nextQuestion, thumbnail, trackText, trackText1, submitAnswer, currentTrackQ, correctAnswer, inputField, incorrectAnswer, audioPlayerRow, setTrackIndex, setCurrentTrack, trackIndex, tracks])
 
     // const nextTrack = () => {
     //     if (currentTrack.src === lastSrc) {
@@ -161,7 +200,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                         <Row>
                             {/* <button onClick={nextTrack} className="button-custom1">Next question</button> */}
                             <Button onClick={nextTrack} className="btn btn-md custom-button-1" style={{ display: 'none' }} ref={nextQuestion}>Next question</Button>
-                            <button className='btn btn-md custom-button-1' onClick={() => navigate("/home")} style={{ display: 'none' }} ref={finishQuiz}>Play again</button>
+                            <button className='btn btn-md custom-button-1' onClick={() => navigate("/")} style={{ display: 'none' }} ref={finishQuiz}>Play again</button>
                         </Row>
                     </Col>
                 </Row>
