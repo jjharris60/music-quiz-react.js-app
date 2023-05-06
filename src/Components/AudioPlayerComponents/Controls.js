@@ -3,8 +3,8 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import {
   IoPlayBackSharp,
   IoPlayForwardSharp,
-  // IoPlaySkipBackSharp,
-  // IoPlaySkipForwardSharp,
+  IoPlaySkipBackSharp,
+  IoPlaySkipForwardSharp,
   IoPlaySharp,
   IoPauseSharp,
 } from 'react-icons/io5';
@@ -73,26 +73,26 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
   const skipBackward = () => {
     audioRef.current.currentTime -= 15;
   }
-  // const handlePrevious = () => {
-  //   if (trackIndex === 0) {
-  //     let lastTrackIndex = tracks.length - 1;
-  //     setTrackIndex(lastTrackIndex);
-  //     setCurrentTrack(tracks[lastTrackIndex])
-  //   } else {
-  //     setTrackIndex((prev) => prev - 1);
-  //     setCurrentTrack(tracks[trackIndex - 1])
-  //   }
-  // }
-  // const handleNext = () => {
-  //   if (trackIndex >= tracks.length - 1) {
-  //     setTrackIndex(0);
-  //     setCurrentTrack(tracks[0]);
-  //   } else {
-  //     setTrackIndex((prev) => prev + 1)
-  //     setCurrentTrack(tracks[trackIndex + 1])
-  //     audioRef.current.play()
-  //   }
-  // }
+  const handlePrevious = () => {
+    if (trackIndex === 0) {
+      let lastTrackIndex = tracks.length - 1;
+      setTrackIndex(lastTrackIndex);
+      setCurrentTrack(tracks[lastTrackIndex])
+    } else {
+      setTrackIndex((prev) => prev - 1);
+      setCurrentTrack(tracks[trackIndex - 1])
+    }
+  }
+  const handleNext = () => {
+    if (trackIndex >= tracks.length - 1) {
+      setTrackIndex(0);
+      setCurrentTrack(tracks[0]);
+    } else {
+      setTrackIndex((prev) => prev + 1)
+      setCurrentTrack(tracks[trackIndex + 1])
+      audioRef.current.play()
+    }
+  }
 
   // const volumeOnChange = onchange = (e) => {
   //   setVolume(e.target.value);
@@ -124,6 +124,9 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
   // );
   return (
     <>
+      <button className='ps-0 playpausebtn'>
+        <IoPlaySkipBackSharp onClick={handlePrevious} />
+      </button>
       <button className='ps-0 playpausebtn' onClick={skipBackward}>
         <IoPlayBackSharp />
       </button>
@@ -132,6 +135,9 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
       </button>
       <button className='ps-2 pe-0 playpausebtn' onClick={skipForward}>
         <IoPlayForwardSharp />
+      </button>
+      <button className='ps-2 pe-0 playpausebtn' onClick={handleNext}>
+        <IoPlaySkipForwardSharp />
       </button>
     </>
   )

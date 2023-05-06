@@ -20,6 +20,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     const inputField = document.getElementById('inputfield')
     const audioPlayerRow = document.getElementById('audioplayerrow')
     const finishQuiz = document.getElementById('finishquiz')
+    const incorrectAnswer = document.getElementById('incorrectanswer')
     const lastTrack = tracks[tracks.length - 1]
     const lastSrc = lastTrack.src
     // console.log(currentTrack.src)
@@ -64,11 +65,20 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             newInputValue('')
             newScoreValue(scoreValue + 1)
         } else if (inputValue !== currentTrackValues[0] || inputValue !== currentTrackValues[1]) {
-            alert('wrong anwser')
+            Thumbnail.style.filter = 'blur(0)'
+            TrackInfo.style.display = 'block'
+            TrackInfo1.style.display = 'block'
+            submitAnswer.style.display = 'none'
+            nextQuestion.style.display = 'block'
+            incorrectAnswer.style.display = 'block'
+            currentTrackQ.style.display = 'none'
+            inputField.style.display = 'none'
+            audioPlayerRow.style.display = 'none'
+            audioRef.current.pause()
+            newInputValue('')
             // setTrackIndex((prev) => prev + 1)
             // setCurrentTrack(tracks[trackIndex + 1])
         }
-        console.log(checkYourAnwser)
     }
 
     const nextTrack = () => {
@@ -83,6 +93,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             submitAnswer.style.display = 'block'
             nextQuestion.style.display = 'none'
             correctAnswer.style.display = 'none'
+            incorrectAnswer.style.display = 'none'
             currentTrackQ.style.display = 'block'
             inputField.style.display = 'block'
             audioPlayerRow.style.display = 'block'
@@ -107,7 +118,8 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                     <Col>
                         <Row>
                             <p id="currenttrackq" className="quizinputtext m-0 p-0" style={{ display: 'block' }}>{currentTrack.question}</p>
-                            <p id="correctanswer" className="quizinputtext m-0" style={{ display: 'none', fontSize: '2rem' }}>Correct answer!</p>
+                            <p id="correctanswer" className="quizinputtext m-0" style={{ display: 'none', fontSize: '2rem' }}>Correct!</p>
+                            <p id="incorrectanswer" className="quizinputtext m-0" style={{ display: 'none', fontSize: '2rem' }}>Unlucky!</p>
                         </Row>
                     </Col>
                 </Row>
@@ -122,7 +134,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                     <Col className='d-flex justify-content-center'>
                         <Row>
                             {/* <button onClick={checkYourAnwser} className="button-custom1">Submit answer</button> */}
-                            <Button onClick={checkYourAnwser} className="btn btn-md custom-button-1" id="submitanswer" style={{ display: 'block' }}>Submit answer</Button>
+                            <Button onClick={checkYourAnwser} className="btn btn-md custom-button-1" id="submitanswer" style={{ display: 'block' }}>Are you correct?</Button>
                         </Row>
                     </Col>
                 </Row>
@@ -132,6 +144,13 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                             {/* <button onClick={nextTrack} className="button-custom1">Next question</button> */}
                             <Button onClick={nextTrack} className="btn btn-md custom-button-1" id="nextquestion" style={{ display: 'none' }}>Next question</Button>
                             <button id="finishquiz" className='btn btn-md custom-button-1' onClick={() => navigate("/home")} style={{ display: 'none' }}>Back to the Start</button>
+                        </Row>
+                    </Col>
+                </Row>
+                <Row className='d-flex justify-content-center mt-3'>
+                    <Col className='d-flex justify-content-center'>
+                        <Row>
+                            <p>Your Score: {scoreValue}</p>
                         </Row>
                     </Col>
                 </Row>

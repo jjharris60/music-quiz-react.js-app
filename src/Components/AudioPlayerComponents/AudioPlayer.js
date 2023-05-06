@@ -33,7 +33,7 @@ const AudioPlayer = () => {
                 <Row className='d-flex justify-content-center mt-4'>
                     <Col id="audioplayerrow" className='col-lg-8 col-8' style={{ display: 'block' }}>
                         <Row className='justify-content-center'>
-                            <Col className='d-flex justify-content-end col-1 p-0'>
+                            <Col className='d-flex justify-content-center col-2 p-0'>
                                 <Controls {...{
                                     audioRef, progressBarRef, duration, timeProgress, setTimeProgress, tracks,
                                     trackIndex,
