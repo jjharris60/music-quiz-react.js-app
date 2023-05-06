@@ -126,7 +126,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 <Row className='d-flex justify-content-center mt-3'>
                     <Col className='col-lg-3 col-8'>
                         <Row className="d-flex justify-content-center">
-                            <input className="input-elements" id="inputfield" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your anwser" style={{ display: 'block' }} />
+                            <input className="input-elements" id="inputfield" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your guess" style={{ display: 'block' }} />
                         </Row>
                     </Col>
                 </Row>
@@ -143,7 +143,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                         <Row>
                             {/* <button onClick={nextTrack} className="button-custom1">Next question</button> */}
                             <Button onClick={nextTrack} className="btn btn-md custom-button-1" id="nextquestion" style={{ display: 'none' }}>Next question</Button>
-                            <button id="finishquiz" className='btn btn-md custom-button-1' onClick={() => navigate("/home")} style={{ display: 'none' }}>Back to the Start</button>
+                            <button id="finishquiz" className='btn btn-md custom-button-1' onClick={() => navigate("/home")} style={{ display: 'none' }}>Play again</button>
                         </Row>
                     </Col>
                 </Row>
