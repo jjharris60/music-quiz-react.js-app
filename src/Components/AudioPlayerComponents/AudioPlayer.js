@@ -37,12 +37,12 @@ const AudioPlayer = () => {
                 <Row className='d-flex justify-content-center mt-4'>
                     <Col className='col-lg-8 col-8' style={{ display: 'block' }} ref={audioPlayerRow}>
                         <Row className='justify-content-center'>
-                            <Col className='d-flex justify-content-center col-2 p-0'>
+                            <Col className='d-flex justify-content-center col p-0'>
                                 <Controls {...{
                                     audioRef, progressBarRef, duration, timeProgress, setTimeProgress, tracks,
                                     trackIndex,
                                     setTrackIndex,
-                                    setCurrentTrack
+                                    setCurrentTrack,
                                 }} />
                             </Col>
                             {/* <Col className='col-10 p-0'>
@@ -54,7 +54,7 @@ const AudioPlayer = () => {
                         </Row>
                     </Col>
                 </Row>
-                <Row className='justify-content-center mt-4'>
+                <Row className='justify-content-center mt-5'>
                     <Col className='col-8'>
                         <QuizInput {...{ audioPlayerRow, trackText, trackText1, thumbnail, audioRef, currentTrack, trackIndex, setTrackIndex, setCurrentTrack, tracks }} />
                     </Col>

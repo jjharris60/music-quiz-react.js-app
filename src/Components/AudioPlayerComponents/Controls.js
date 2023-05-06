@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 // icons
 import {
   IoPlayBackSharp,
@@ -9,7 +10,20 @@ import {
   IoPauseSharp,
 } from 'react-icons/io5';
 
-const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks, trackIndex, setTrackIndex, setCurrentTrack }) => {
+const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks, trackIndex, setTrackIndex, setCurrentTrack, timeProgress }) => {
+
+  const formatTime = useCallback((time) => {
+    if (time && !isNaN(time)) {
+      const minutes = Math.floor(time / 60);
+      const formatMinutes =
+        minutes < 10 ? `0${minutes}` : `${minutes}`;
+      const seconds = Math.floor(time % 60);
+      const formatSeconds =
+        seconds < 10 ? `0${seconds}` : `${seconds}`;
+      return `${formatMinutes}:${formatSeconds}`;
+    }
+    return '00:00';
+  }, []);
 
   // const [volume, setVolume] = useState(20)
   const playAnimationRef = useRef();
@@ -123,23 +137,35 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
   //   </div>
   // );
   return (
-    <>
-      <button className='ps-0 playpausebtn'>
-        <IoPlaySkipBackSharp onClick={handlePrevious} />
-      </button>
-      <button className='ps-0 playpausebtn' onClick={skipBackward}>
-        <IoPlayBackSharp />
-      </button>
-      <button onClick={togglePlayPause} className='playpausebtn p-0' id='playpausebtn'>
-        {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
-      </button>
-      <button className='ps-2 pe-0 playpausebtn' onClick={skipForward}>
-        <IoPlayForwardSharp />
-      </button>
-      <button className='ps-2 pe-0 playpausebtn' onClick={handleNext}>
-        <IoPlaySkipForwardSharp />
-      </button>
-    </>
+    <Container fluid>
+      <Row className='d-flex justify-content-center'>
+        <Col className='col-2 p-2 d-flex justify-content-center'>
+          <button className='pe-3 ps-0 pt-0 pb-0 playpausebtn'>
+            <IoPlaySkipBackSharp onClick={handlePrevious} />
+          </button>
+          <button className='pe-3 ps-0 pt-0 pb-0 playpausebtn' onClick={skipBackward}>
+            <IoPlayBackSharp />
+          </button>
+          <button onClick={togglePlayPause} className='playpausebtn p-0' id='playpausebtn'>
+            {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
+          </button>
+          <button className='pe-0 ps-3 pt-0 pb-0 playpausebtn' onClick={skipForward}>
+            <IoPlayForwardSharp />
+          </button>
+          <button className='pe-0 ps-3 pt-0 pb-0 playpausebtn' onClick={handleNext}>
+            <IoPlaySkipForwardSharp />
+          </button>
+        </Col>
+      </Row>
+      <Row className='d-flex justify-content-center'>
+        <Col className='col-4 p-0'>
+          <p className="m-0 time-current" style={{ textAlign: 'center' }}>{formatTime(timeProgress)} / {formatTime(duration)}</p>
+        </Col>
+      </Row>
+    </Container>
+
+
+
   )
 };
 

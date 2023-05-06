@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import './styles/Progress-bar.css'
-import './styles/Home.css'
-import './styles/Audio-player.css'
 import App from './App'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import reportWebVitals from './reportWebVitals';

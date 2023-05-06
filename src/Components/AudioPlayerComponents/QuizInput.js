@@ -61,6 +61,10 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     // }
 
     const checkYourAnwser = useCallback(() => {
+        if (inputValue === '') {
+            alert('Type your guess into the text box')
+            return;
+        }
         if (inputValue.toLowerCase() === currentTrackValues[0].toLowerCase() ||
             inputValue.toUpperCase() === currentTrackValues[0].toUpperCase() ||
             inputValue.toLowerCase() === currentTrackValues[1].toLowerCase() ||
@@ -77,9 +81,6 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             audioRef.current.pause();
             newInputValue('');
             newScoreValue(scoreValue + 1);
-            if (inputValue === '') {
-                alert('Type your guess into the text box')
-            }
             if (currentTrack.src === lastSrc) {
                 nextQuestion.current.style.display = 'none'
                 finishQuiz.current.style.display = 'block'
@@ -93,10 +94,10 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 incorrectAnswer.current.style.display = 'block';
                 audioPlayerRow.current.style.display = 'none';
             }
-        } else if (inputValue.toLowerCase() === currentTrackValues[0].toLowerCase() ||
-            inputValue.toUpperCase() === currentTrackValues[0].toUpperCase() ||
-            inputValue.toLowerCase() === currentTrackValues[1].toLowerCase() ||
-            inputValue.toUpperCase() === currentTrackValues[1].toUpperCase()) {
+        } else if (inputValue.toLowerCase() !== currentTrackValues[0].toLowerCase() ||
+            inputValue.toUpperCase() !== currentTrackValues[0].toUpperCase() ||
+            inputValue.toLowerCase() !== currentTrackValues[1].toLowerCase() ||
+            inputValue.toUpperCase() !== currentTrackValues[1].toUpperCase()) {
             thumbnail.current.style.filter = 'blur(0)';
             trackText.current.style.display = 'block';
             trackText1.current.style.display = 'block';
@@ -108,9 +109,6 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
             audioPlayerRow.current.style.display = 'none';
             audioRef.current.pause();
             newInputValue('');
-            if (inputValue === '') {
-                alert('Type your guess into the text box')
-            }
             if (currentTrack.src === lastSrc) {
                 nextQuestion.current.style.display = 'none'
                 finishQuiz.current.style.display = 'block'
@@ -183,7 +181,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 <Row className='d-flex justify-content-center mt-3'>
                     <Col className='col-lg-3 col-8'>
                         <Row className="d-flex justify-content-center">
-                            <input className="input-elements" type="text" value={inputValue} onChange={userInputHandler} ref={inputField} placeholder="Your guess" style={{ display: 'block' }} />
+                            <input className="inputfield" type="text" value={inputValue} onChange={userInputHandler} ref={inputField} placeholder="Your guess" style={{ display: 'block' }} />
                         </Row>
                     </Col>
                 </Row>
@@ -191,7 +189,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                     <Col className='d-flex justify-content-center'>
                         <Row>
                             {/* <button onClick={checkYourAnwser} className="button-custom1">Submit answer</button> */}
-                            <Button onClick={checkYourAnwser} className="btn btn-md custom-button-1" style={{ display: 'block' }} ref={submitAnswer}>Are you correct?</Button>
+                            <Button onClick={checkYourAnwser} className="btn btn-md custombutton" style={{ display: 'block' }} ref={submitAnswer}>Are you correct?</Button>
                         </Row>
                     </Col>
                 </Row>
@@ -199,8 +197,8 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                     <Col className='d-flex justify-content-center'>
                         <Row>
                             {/* <button onClick={nextTrack} className="button-custom1">Next question</button> */}
-                            <Button onClick={nextTrack} className="btn btn-md custom-button-1" style={{ display: 'none' }} ref={nextQuestion}>Next question</Button>
-                            <button className='btn btn-md custom-button-1' onClick={() => navigate("/")} style={{ display: 'none' }} ref={finishQuiz}>Play again</button>
+                            <Button onClick={nextTrack} className="btn btn-md custombutton" style={{ display: 'none' }} ref={nextQuestion}>Next question</Button>
+                            <button className='btn btn-md custombutton' onClick={() => navigate("/")} style={{ display: 'none' }} ref={finishQuiz}>Play again</button>
                         </Row>
                     </Col>
                 </Row>
