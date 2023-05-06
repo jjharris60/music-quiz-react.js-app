@@ -21,17 +21,21 @@ const AudioPlayer = () => {
     // reference
     const audioRef = useRef();
     const progressBarRef = useRef();
+    const thumbnail = useRef();
+    const trackText = useRef()
+    const trackText1 = useRef()
+    const audioPlayerRow = useRef()
 
     return (
         <Container fluid className='vh-100 d-flex align-items-center'>
             <Col className='maincolumn'>
                 <Row className='justify-content-center'>
                     <Col className='col-8'>
-                        <DisplayTrack {...{ currentTrack, audioRef, setDuration, progressBarRef }} />
+                        <DisplayTrack {...{ trackText, trackText1, thumbnail, currentTrack, audioRef, setDuration, progressBarRef }} />
                     </Col>
                 </Row>
                 <Row className='d-flex justify-content-center mt-4'>
-                    <Col id="audioplayerrow" className='col-lg-8 col-8' style={{ display: 'block' }}>
+                    <Col className='col-lg-8 col-8' style={{ display: 'block' }} ref={audioPlayerRow}>
                         <Row className='justify-content-center'>
                             <Col className='d-flex justify-content-center col-2 p-0'>
                                 <Controls {...{
@@ -52,7 +56,7 @@ const AudioPlayer = () => {
                 </Row>
                 <Row className='justify-content-center mt-4'>
                     <Col className='col-8'>
-                        <QuizInput {...{ audioRef, currentTrack, trackIndex, setTrackIndex, setCurrentTrack, tracks }} />
+                        <QuizInput {...{ audioPlayerRow, trackText, trackText1, thumbnail, audioRef, currentTrack, trackIndex, setTrackIndex, setCurrentTrack, tracks }} />
                     </Col>
                 </Row>
             </Col>

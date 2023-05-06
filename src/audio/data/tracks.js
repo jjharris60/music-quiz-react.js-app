@@ -40,19 +40,19 @@ export const tracks = [
     },
     {
         title: 'The Chain',
-        src: audioData.audioFiles[6],
+        src: audioData.audioFiles[14],
         author: 'FleetWood Mac',
         thumbnail: audioData.audioThumbnails[6]
     },
     {
         title: 'Here comes the sun',
-        src: audioData.audioFiles[7],
+        src: audioData.audioFiles[6],
         author: 'The Beetles',
         thumbnail: audioData.audioThumbnails[7]
     },
     {
-        title: 'JohnnyB.Good',
-        src: audioData.audioFiles[8],
+        title: 'JohnnyBGood',
+        src: audioData.audioFiles[7],
         author: 'Chuck Berry',
         thumbnail: audioData.audioThumbnails[8]
     },
@@ -60,7 +60,6 @@ export const tracks = [
         title: 'Life is a Highway',
         src: audioData.audioFiles[8],
         author: 'Rascal Flatts',
-        thumbnail: audioData.audioThumbnails[8]
-
+        thumbnail: audioData.audioThumbnails[9]
     },
 ]

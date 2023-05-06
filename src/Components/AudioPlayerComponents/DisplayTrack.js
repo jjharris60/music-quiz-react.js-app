@@ -2,12 +2,13 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef }) => {
+const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef, thumbnail, trackText, trackText1 }) => {
     // const onLoadedMetadata = () => {
     //     const seconds = audioRef.current.duration;
     //     setDuration(seconds);
     //     progressBarRef.current.max = seconds;
     // };
+
     return (
         <Container fluid className='displaytrackcontainer'>
             <Row>
@@ -15,17 +16,17 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef }) =
                     <audio src={currentTrack.src} ref={audioRef}></audio>
                     <Row className='mt-4'>
                         <Col className='d-flex justify-content-center'>
-                            <img id='track-cover' alt='track-cover' src={currentTrack.thumbnail} style={{ width: '300px', filter: 'blur(40px)' }} />
+                            <img id='track-cover' alt='track-cover' src={currentTrack.thumbnail} style={{ width: '300px', filter: 'blur(40px)' }} ref={thumbnail} />
                         </Col>
                     </Row>
                     <Row className='mt-3'>
                         <Col>
-                            <p id='tracktext1' className='tracktext' style={{ display: 'none' }}>{currentTrack.title}</p>
+                            <p id='tracktext1' className='tracktext' style={{ display: 'none' }} ref={trackText}>{currentTrack.title}</p>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
                         <Col>
-                            <p id='tracktext2' className='tracktext' style={{ display: 'none' }}>{currentTrack.author}</p>
+                            <p id='tracktext2' className='tracktext' style={{ display: 'none' }} ref={trackText1}>{currentTrack.author}</p>
                         </Col>
                     </Row>
                 </Col>
