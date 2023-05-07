@@ -7,8 +7,8 @@ export const tracks = [
         src: audioData.audioFiles[0],
         author: 'Dominic Fike',
         thumbnail: audioData.audioThumbnails[0],
-        releaseyear: '2018'
-
+        releaseyear: '2018',
+        answer: '3 Nights'
     },
     {
         question: 'What year was this song released?',
@@ -16,7 +16,8 @@ export const tracks = [
         src: audioData.audioFiles[1],
         author: 'Green Day',
         thumbnail: audioData.audioThumbnails[1],
-        releaseyear: '2004'
+        releaseyear: '2004',
+        answer: '2004'
     },
     {
         question: 'This song Care For was written by which band?',
@@ -24,7 +25,8 @@ export const tracks = [
         src: audioData.audioFiles[2],
         author: 'Blossoms',
         thumbnail: audioData.audioThumbnails[2],
-        releaseyear: '2022'
+        releaseyear: '2022',
+        answer: 'Blossoms'
     },
     {
         question: 'Which Ed Sheeran album is this song from?',
@@ -41,7 +43,8 @@ export const tracks = [
         src: audioData.audioFiles[4],
         author: 'The Fratellis',
         thumbnail: audioData.audioThumbnails[4],
-        releaseyear: '2006'
+        releaseyear: '2006',
+        answer: 'Chelsea Dagger'
     },
     {
         question: 'What year was this song released?',
@@ -49,7 +52,8 @@ export const tracks = [
         src: audioData.audioFiles[5],
         author: 'Elton John',
         thumbnail: audioData.audioThumbnails[5],
-        releaseyear: '1972'
+        releaseyear: '1972',
+        answer: '1972'
     },
     {
         question: 'This song, The Chain, was released by which band in 1972?',
@@ -57,7 +61,8 @@ export const tracks = [
         src: audioData.audioFiles[14],
         author: 'FleetWood Mac',
         thumbnail: audioData.audioThumbnails[6],
-        releaseyear: '1972'
+        releaseyear: '1972',
+        answer: 'FleetWood Mac'
     },
     {
         question: 'Which member of the Beatles wrote this song?',
@@ -66,10 +71,10 @@ export const tracks = [
         author: 'The Beetles',
         thumbnail: audioData.audioThumbnails[7],
         releaseyear: '1969',
-        answer: 'George Harrison'
+        answer: 'George Harrisson'
     },
     {
-        question: "This song JohnnyB.Goode by Chuck Berry, featured in which popular 80's SciFi film?",
+        question: "This song JohnnyB.Goode featured in which popular 80's SciFi film?",
         title: 'JohnnyBGoode',
         src: audioData.audioFiles[7],
         author: 'Chuck Berry',

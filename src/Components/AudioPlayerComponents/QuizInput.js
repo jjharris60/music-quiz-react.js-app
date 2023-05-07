@@ -27,7 +27,6 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
         // updates the new inputValue to whatever the user inputs into the <input> tag
         newInputValue(userInputEvent.target.value)
     }
-    console.log(currentTrackValues[2])
     // Function for checking if user's anwser is correct. Compares the string value from the <input> tag to the currentTrack's value's, such as author and title
     // const checkYourAnwser = () => {
     //     if (inputValue === currentTrackValues[0] || inputValue === currentTrackValues[1]) {
@@ -95,10 +94,10 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 nextQuestion.current.style.display = 'none';
                 currentTrackQ.current.style.display = 'none';
                 inputField.current.style.display = 'none';
-                incorrectAnswer.current.style.display = 'block';
+                incorrectAnswer.current.style.display = 'none';
                 audioPlayerRow.current.style.display = 'none';
             }
-        } else if (inputValue.toLowerCase() === currentTrackValues[0].toLowerCase() ||
+        } else if (inputValue.toLowerCase() !== currentTrackValues[0].toLowerCase() ||
             inputValue.toUpperCase() !== currentTrackValues[0].toUpperCase() ||
             inputValue.toLowerCase() !== currentTrackValues[1].toLowerCase() ||
             inputValue.toUpperCase() !== currentTrackValues[1].toUpperCase() ||
