@@ -159,7 +159,7 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
       </Row>
       <Row className='d-flex justify-content-center'>
         <Col className='col-lg-4 p-0'>
-          <p className="m-0 time-current" style={{ textAlign: 'center' }}>{formatTime(timeProgress)} / {formatTime(duration)}</p>
+          <p className="m-0 timecurrent" style={{ textAlign: 'center' }}>{formatTime(timeProgress)} / {formatTime(duration)}</p>
         </Col>
       </Row>
     </Container>

@@ -2,25 +2,25 @@ import audioData from "../data/creatingtrackarray";
 
 export const tracks = [
     {
-        question: 'What is the name of this song?',
+        question: 'What year was this song released?',
         title: '3 Nights',
         src: audioData.audioFiles[0],
         author: 'Dominic Fike',
         thumbnail: audioData.audioThumbnails[0],
         releaseyear: '2018',
-        answer: '3 Nights'
+        answer: '2018'
     },
     {
-        question: 'What year was this song released?',
+        question: 'What is the name of this song?',
         title: 'American Idiot',
         src: audioData.audioFiles[1],
         author: 'Green Day',
         thumbnail: audioData.audioThumbnails[1],
         releaseyear: '2004',
-        answer: '2004'
+        answer: 'American Idiot'
     },
     {
-        question: 'This song Care For was written by which band?',
+        question: 'This song was written by which band?',
         title: 'Care For',
         src: audioData.audioFiles[2],
         author: 'Blossoms',
