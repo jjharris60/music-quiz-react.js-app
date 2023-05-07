@@ -21,13 +21,13 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     const lastSrc = lastTrack.src
 
     // sets an initial input value of '' and a function to update the state
-    const currentTrackValues = useMemo(() => [currentTrack.author, currentTrack.title], [currentTrack.author, currentTrack.title]);
+    const currentTrackValues = useMemo(() => [currentTrack.author, currentTrack.title, currentTrack.releaseyear, currentTrack.answer], [currentTrack.author, currentTrack.title, currentTrack.releaseyear, currentTrack.answer]);
     // Function for updating the user's input value
     const userInputHandler = onchange = (userInputEvent) => {
         // updates the new inputValue to whatever the user inputs into the <input> tag
         newInputValue(userInputEvent.target.value)
     }
-
+    console.log(currentTrackValues[2])
     // Function for checking if user's anwser is correct. Compares the string value from the <input> tag to the currentTrack's value's, such as author and title
     // const checkYourAnwser = () => {
     //     if (inputValue === currentTrackValues[0] || inputValue === currentTrackValues[1]) {
@@ -68,7 +68,11 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
         if (inputValue.toLowerCase() === currentTrackValues[0].toLowerCase() ||
             inputValue.toUpperCase() === currentTrackValues[0].toUpperCase() ||
             inputValue.toLowerCase() === currentTrackValues[1].toLowerCase() ||
-            inputValue.toUpperCase() === currentTrackValues[1].toUpperCase()) {
+            inputValue.toUpperCase() === currentTrackValues[1].toUpperCase() ||
+            inputValue.toLowerCase() === currentTrackValues[2].toLowerCase() ||
+            inputValue.toUpperCase() === currentTrackValues[2].toUpperCase() ||
+            inputValue.toLowerCase() === currentTrackValues[3].toLowerCase() ||
+            inputValue.toUpperCase() === currentTrackValues[3].toUpperCase()) {
             thumbnail.current.style.filter = 'blur(0)';
             trackText.current.style.display = 'block';
             trackText1.current.style.display = 'block';
@@ -94,10 +98,14 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 incorrectAnswer.current.style.display = 'block';
                 audioPlayerRow.current.style.display = 'none';
             }
-        } else if (inputValue.toLowerCase() !== currentTrackValues[0].toLowerCase() ||
+        } else if (inputValue.toLowerCase() === currentTrackValues[0].toLowerCase() ||
             inputValue.toUpperCase() !== currentTrackValues[0].toUpperCase() ||
             inputValue.toLowerCase() !== currentTrackValues[1].toLowerCase() ||
-            inputValue.toUpperCase() !== currentTrackValues[1].toUpperCase()) {
+            inputValue.toUpperCase() !== currentTrackValues[1].toUpperCase() ||
+            inputValue.toLowerCase() !== currentTrackValues[2].toLowerCase() ||
+            inputValue.toUpperCase() !== currentTrackValues[2].toUpperCase() ||
+            inputValue.toLowerCase() !== currentTrackValues[3].toLowerCase() ||
+            inputValue.toUpperCase() !== currentTrackValues[3].toUpperCase()) {
             thumbnail.current.style.filter = 'blur(0)';
             trackText.current.style.display = 'block';
             trackText1.current.style.display = 'block';

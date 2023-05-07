@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'react-bootstrap';
 import {
   IoPlayBackSharp,
   IoPlayForwardSharp,
-  IoPlaySkipBackSharp,
-  IoPlaySkipForwardSharp,
+  // IoPlaySkipBackSharp,
+  // IoPlaySkipForwardSharp,
   IoPlaySharp,
   IoPauseSharp,
 } from 'react-icons/io5';
@@ -87,26 +87,26 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
   const skipBackward = () => {
     audioRef.current.currentTime -= 15;
   }
-  const handlePrevious = () => {
-    if (trackIndex === 0) {
-      let lastTrackIndex = tracks.length - 1;
-      setTrackIndex(lastTrackIndex);
-      setCurrentTrack(tracks[lastTrackIndex])
-    } else {
-      setTrackIndex((prev) => prev - 1);
-      setCurrentTrack(tracks[trackIndex - 1])
-    }
-  }
-  const handleNext = () => {
-    if (trackIndex >= tracks.length - 1) {
-      setTrackIndex(0);
-      setCurrentTrack(tracks[0]);
-    } else {
-      setTrackIndex((prev) => prev + 1)
-      setCurrentTrack(tracks[trackIndex + 1])
-      audioRef.current.play()
-    }
-  }
+  // const handlePrevious = () => {
+  //   if (trackIndex === 0) {
+  //     let lastTrackIndex = tracks.length - 1;
+  //     setTrackIndex(lastTrackIndex);
+  //     setCurrentTrack(tracks[lastTrackIndex])
+  //   } else {
+  //     setTrackIndex((prev) => prev - 1);
+  //     setCurrentTrack(tracks[trackIndex - 1])
+  //   }
+  // }
+  // const handleNext = () => {
+  //   if (trackIndex >= tracks.length - 1) {
+  //     setTrackIndex(0);
+  //     setCurrentTrack(tracks[0]);
+  //   } else {
+  //     setTrackIndex((prev) => prev + 1)
+  //     setCurrentTrack(tracks[trackIndex + 1])
+  //     audioRef.current.play()
+  //   }
+  // }
 
   // const volumeOnChange = onchange = (e) => {
   //   setVolume(e.target.value);
@@ -140,9 +140,9 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
     <Container fluid>
       <Row className='d-flex justify-content-center'>
         <Col className='col-2 p-2 d-flex justify-content-center'>
-          <button className='pe-3 ps-0 pt-0 pb-0 playpausebtn'>
+          {/* <button className='pe-3 ps-0 pt-0 pb-0 playpausebtn'>
             <IoPlaySkipBackSharp onClick={handlePrevious} />
-          </button>
+          </button> */}
           <button className='pe-3 ps-0 pt-0 pb-0 playpausebtn' onClick={skipBackward}>
             <IoPlayBackSharp />
           </button>
@@ -152,13 +152,13 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
           <button className='pe-0 ps-3 pt-0 pb-0 playpausebtn' onClick={skipForward}>
             <IoPlayForwardSharp />
           </button>
-          <button className='pe-0 ps-3 pt-0 pb-0 playpausebtn' onClick={handleNext}>
+          {/* <button className='pe-0 ps-3 pt-0 pb-0 playpausebtn' onClick={handleNext}>
             <IoPlaySkipForwardSharp />
-          </button>
+          </button> */}
         </Col>
       </Row>
       <Row className='d-flex justify-content-center'>
-        <Col className='col-4 p-0'>
+        <Col className='col-lg-4 p-0'>
           <p className="m-0 time-current" style={{ textAlign: 'center' }}>{formatTime(timeProgress)} / {formatTime(duration)}</p>
         </Col>
       </Row>

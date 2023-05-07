@@ -16,17 +16,17 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef, thu
                     <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
                     <Row className='mt-4'>
                         <Col className='d-flex justify-content-center'>
-                            <img id='track-cover' alt='track-cover' src={currentTrack.thumbnail} style={{ width: '300px', filter: 'blur(40px)' }} ref={thumbnail} />
+                            <img className='trackcover' alt='track-cover' src={currentTrack.thumbnail} style={{ filter: 'blur(40px)' }} ref={thumbnail} />
                         </Col>
                     </Row>
                     <Row className='mt-3'>
                         <Col>
-                            <p id='tracktext1' className='tracktext' style={{ display: 'none' }} ref={trackText}>{currentTrack.title}</p>
+                            <p className='tracktext' style={{ display: 'none' }} ref={trackText}>{currentTrack.title}</p>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
                         <Col>
-                            <p id='tracktext2' className='tracktext' style={{ display: 'none' }} ref={trackText1}>{currentTrack.author}</p>
+                            <p className='tracktext' style={{ display: 'none' }} ref={trackText1}>{currentTrack.author}</p>
                         </Col>
                     </Row>
                 </Col>

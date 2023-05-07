@@ -7,8 +7,27 @@
   font-family: "century-gothic", sans-serif;
 }
 
+@media only screen and (max-width: 481px) {
+  .trackcover {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .trackcover {
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 761px) {
+  .trackcover {
+    width: 30%;
+  }
+}
+
 p {
   font-family: "century-gothic", sans-serif;
+  font-size: 1rem;
   font-weight: 400;
   font-style: normal;
 }
@@ -59,4 +78,3 @@ svg {
   background-color: transparent !important;
   border: 0 !important;
 }
-
