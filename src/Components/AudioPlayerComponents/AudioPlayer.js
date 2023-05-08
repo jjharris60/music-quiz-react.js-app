@@ -40,12 +40,11 @@ const AudioPlayer = () => {
     const elementStateBlock1 = {
         display: block1
     }
+    const elementSateBlock2 = {
+        display: block2
+    }
     const elementStateNone = {
         display: none
-    }
-
-    const elementSateBlur = {
-        filter: blur
     }
 
     const elementStateNone1 = {
@@ -58,6 +57,10 @@ const AudioPlayer = () => {
 
     const elementStateNone3 = {
         display: none3
+    }
+
+    const elementSateBlur = {
+        filter: blur
     }
 
 
@@ -97,7 +100,7 @@ const AudioPlayer = () => {
                 </Row>
                 <Row className='justify-content-center mt-4'>
                     <Col className='col-8'>
-                        <QuizInput {...{ audioRef, currentTrack, trackIndex, setTrackIndex, setCurrentTrack, tracks, setBlock, setNone, setBlur, elementStateBlock, elementStateNone, elementStateNone1, setBlock1, setNone1, setBlock2, setNone2, elementStateNone2, elementStateNone3, setNone3, elementStateBlock1 }} />
+                        <QuizInput {...{ audioRef, currentTrack, trackIndex, setTrackIndex, setCurrentTrack, tracks, setBlock, setNone, setBlur, elementStateBlock, elementStateNone, elementStateNone1, setBlock1, setNone1, setBlock2, setNone2, elementStateNone2, elementStateNone3, setNone3, elementStateBlock1, elementSateBlock2 }} />
                     </Col>
                 </Row>
             </Col>
