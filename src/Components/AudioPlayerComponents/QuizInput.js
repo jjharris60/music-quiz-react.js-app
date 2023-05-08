@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useState } from "react"
+import { useState } from "react"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -14,7 +14,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     const lastSrc = lastTrack.src
 
     // sets an initial input value of '' and a function to update the state
-    const currentTrackValues = useMemo(() => [currentTrack.author, currentTrack.title, currentTrack.releaseyear, currentTrack.answer], [currentTrack.author, currentTrack.title, currentTrack.releaseyear, currentTrack.answer])
+    const currentTrackValues = [currentTrack.author, currentTrack.title, currentTrack.releaseyear, currentTrack.answer]
     // Function for updating the user's input value
     const userInputHandler = onchange = (userInputEvent) => {
         // updates the new inputValue to whatever the user inputs into the <input> tag
@@ -52,19 +52,12 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     //     }
     // }
 
-    const checkYourAnwser = useCallback(() => {
+    const checkYourAnwser = () => {
         if (inputValue === '') {
             alert('Type your guess into the text box')
             return
         }
-        if (inputValue.toLowerCase() === currentTrackValues[0].toLowerCase() ||
-            inputValue.toUpperCase() === currentTrackValues[0].toUpperCase() ||
-            inputValue.toLowerCase() === currentTrackValues[1].toLowerCase() ||
-            inputValue.toUpperCase() === currentTrackValues[1].toUpperCase() ||
-            inputValue.toLowerCase() === currentTrackValues[2].toLowerCase() ||
-            inputValue.toUpperCase() === currentTrackValues[2].toUpperCase() ||
-            inputValue.toLowerCase() === currentTrackValues[3].toLowerCase() ||
-            inputValue.toUpperCase() === currentTrackValues[3].toUpperCase()) {
+        if ((currentTrackValues.some(trackValue => trackValue.toLowerCase() === inputValue.toLowerCase()))) {
             // thumbnail.current.style.filter = 'blur(0)'
             // trackText.current.style.display = 'block'
             // trackText1.current.style.display = 'block'
@@ -102,14 +95,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 // incorrectAnswer.current.style.display = 'none'
                 // audioPlayerRow.current.style.display = 'none'
             }
-        } else if (inputValue.toLowerCase() !== currentTrackValues[0].toLowerCase() ||
-            inputValue.toUpperCase() !== currentTrackValues[0].toUpperCase() ||
-            inputValue.toLowerCase() !== currentTrackValues[1].toLowerCase() ||
-            inputValue.toUpperCase() !== currentTrackValues[1].toUpperCase() ||
-            inputValue.toLowerCase() !== currentTrackValues[2].toLowerCase() ||
-            inputValue.toUpperCase() !== currentTrackValues[2].toUpperCase() ||
-            inputValue.toLowerCase() !== currentTrackValues[3].toLowerCase() ||
-            inputValue.toUpperCase() !== currentTrackValues[3].toUpperCase()) {
+        } else if (currentTrackValues.some(trackValue => trackValue.toLowerCase() !== inputValue.toLowerCase())) {
             // thumbnail.current.style.filter = 'blur(0)'
             // trackText.current.style.display = 'block'
             // trackText1.current.style.display = 'block'
@@ -148,9 +134,9 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 // audioPlayerRow.current.style.display = 'none'
             }
         }
-    }, [audioRef, currentTrack.src, currentTrackValues, inputValue, scoreValue, lastSrc, setBlur, setNone, setBlock, setNone1, setBlock1, setBlock2, setNone3, setNone2])
+    }
 
-    const nextTrack = useCallback(() => {
+    const nextTrack = () => {
         // console.log(currentTrack.src, lastSrc);
         // if (currentTrack.src === lastSrc) {
         //     nextQuestion.current.style.display = 'none'
@@ -174,7 +160,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
         // audioPlayerRow.current.style.display = 'block'
         setTrackIndex((prev) => prev + 1)
         setCurrentTrack(tracks[trackIndex + 1])
-    }, [setTrackIndex, trackIndex, tracks, setCurrentTrack, setBlur, setNone, setBlock, setNone1, setNone3, setBlock1])
+    }
 
     // const nextTrack = () => {
     //     if (currentTrack.src === lastSrc) {
