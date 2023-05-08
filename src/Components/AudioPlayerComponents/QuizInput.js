@@ -1,4 +1,4 @@
-import { useRef, useMemo, useCallback, useState } from "react"
+import { useMemo, useCallback, useState } from "react"
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -10,13 +10,6 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
     const navigate = useNavigate()
     const [inputValue, newInputValue] = useState('')
     const [scoreValue, newScoreValue] = useState(0)
-    const submitAnswer = useRef()
-    const nextQuestion = useRef()
-    const currentTrackQ = useRef()
-    const correctAnswer = useRef()
-    const inputField = useRef()
-    const finishQuiz = useRef()
-    const incorrectAnswer = useRef()
     const lastTrack = tracks[tracks.length - 1]
     const lastSrc = lastTrack.src
 
@@ -210,16 +203,16 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 <Row className='d-flex justify-content-center'>
                     <Col>
                         <Row>
-                            <p className="quizinputtext m-0 p-0" style={elementStateBlock} ref={currentTrackQ}>{currentTrack.question}</p>
-                            <p className="quizinputtext m-0" style={elementStateNone} ref={correctAnswer}>Correct!</p>
-                            <p className="quizinputtext m-0" style={elementStateNone1} ref={incorrectAnswer}>Unlucky!</p>
+                            <p className="quizinputtext m-0 p-0" style={elementStateBlock}>{currentTrack.question}</p>
+                            <p className="quizinputtext m-0" style={elementStateNone}>Correct!</p>
+                            <p className="quizinputtext m-0" style={elementStateNone1}>Unlucky!</p>
                         </Row>
                     </Col>
                 </Row>
                 <Row className='d-flex justify-content-center mt-3'>
                     <Col className='col-xl-3 col-lg-3 col-md-6 col-sm-8 col'>
                         <Row className="d-flex justify-content-center">
-                            <input className="inputfield" type="text" value={inputValue} onChange={userInputHandler} ref={inputField} placeholder="Your guess" style={elementStateBlock} />
+                            <input className="inputfield" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your guess" style={elementStateBlock} />
                         </Row>
                     </Col>
                 </Row>
@@ -227,7 +220,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                     <Col className='d-flex justify-content-center'>
                         <Row>
                             {/* <button onClick={checkYourAnwser} className="button-custom1">Submit answer</button> */}
-                            <Button onClick={checkYourAnwser} className="btn btn-md custombutton" style={elementStateBlock} ref={submitAnswer}>Are you correct?</Button>
+                            <Button onClick={checkYourAnwser} className="btn btn-md custombutton" style={elementStateBlock}>Are you correct?</Button>
                         </Row>
                     </Col>
                 </Row>
@@ -235,8 +228,8 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                     <Col className='d-flex justify-content-center'>
                         <Row>
                             {/* <button onClick={nextTrack} className="button-custom1">Next question</button> */}
-                            <Button onClick={nextTrack} className="btn btn-md custombutton" style={elementStateNone3} ref={nextQuestion}>Next question</Button>
-                            <button className='btn btn-md custombutton' onClick={() => navigate("/")} style={elementStateNone2} ref={finishQuiz}>Play again</button>
+                            <Button onClick={nextTrack} className="btn btn-md custombutton" style={elementStateNone3}>Next question</Button>
+                            <button className='btn btn-md custombutton' onClick={() => navigate("/")} style={elementStateNone2}>Play again</button>
                         </Row>
                     </Col>
                 </Row>
