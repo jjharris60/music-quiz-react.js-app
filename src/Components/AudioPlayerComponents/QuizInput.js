@@ -204,19 +204,19 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                     <Col>
                         <Row>
                             <p className="quizinputtext m-0 p-0" style={elementStateBlock}>{currentTrack.question}</p>
-                            <p className="quizinputtext m-0" style={elementStateNone}>Correct!</p>
-                            <p className="quizinputtext m-0" style={elementStateNone1}>Unlucky!</p>
+                            <p className="quizinputtext1 m-0" style={elementStateNone}>Correct!</p>
+                            <p className="quizinputtext1 m-0" style={elementStateNone1}>Unlucky!</p>
                         </Row>
                     </Col>
                 </Row>
-                <Row className='d-flex justify-content-center mt-3'>
+                <Row className='d-flex justify-content-center mt-4'>
                     <Col className='col-xl-3 col-lg-3 col-md-6 col-sm-8 col'>
                         <Row className="d-flex justify-content-center">
                             <input className="inputfield" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your guess" style={elementStateBlock} />
                         </Row>
                     </Col>
                 </Row>
-                <Row className='d-flex justify-content-center mt-3'>
+                <Row className='d-flex justify-content-center mt-4'>
                     <Col className='d-flex justify-content-center'>
                         <Row>
                             {/* <button onClick={checkYourAnwser} className="button-custom1">Submit answer</button> */}

@@ -55,6 +55,11 @@ svg {
   text-align: center;
 }
 
+.quizinputtext1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
 .timecurrent {
   font-size: 0.875rem;
 }

@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 // thumbnail, trackText, trackText1
-const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef, elementSateBlur, elementSateNone, elementSateBlock }) => {
+const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef, elementSateBlur, elementStateNone, elementSateBlock }) => {
     const onLoadedMetadata = () => {
         const seconds = audioRef.current.duration
         setDuration(seconds)
@@ -22,12 +22,12 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef, ele
                     </Row>
                     <Row className='mt-4'>
                         <Col>
-                            <p className='tracktext' style={elementSateNone}>{currentTrack.title}</p>
+                            <p className='tracktext' style={elementStateNone}>{currentTrack.title}</p>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
                         <Col>
-                            <p className='tracktext' style={elementSateNone}>{currentTrack.author}</p>
+                            <p className='tracktext' style={elementStateNone}>{currentTrack.author}</p>
                         </Col>
                     </Row>
                 </Col>
