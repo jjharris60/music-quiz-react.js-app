@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"
 import VolumeUp from '../../audio/images/volume_up.svg'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -7,12 +7,12 @@ import Col from 'react-bootstrap/Col'
 // import VolumeDown from '../../audio/images/volume_down.svg'
 
 const Volume = ({ audioRef }) => {
-    const [volume, setVolume] = useState(20);
+    const [volume, setVolume] = useState(20)
     // const [muteVolume, setMuteVolume] = useState(false);
 
     useEffect(() => {
         if (audioRef) {
-            audioRef.current.volume = volume / 100;
+            audioRef.current.volume = volume / 100
             // audioRef.current.muted = muteVolume;
         }
     })

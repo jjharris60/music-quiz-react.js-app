@@ -1,11 +1,12 @@
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
-const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef, thumbnail, trackText, trackText1 }) => {
+// thumbnail, trackText, trackText1
+const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef, elementSateBlur, elementSateNone, elementSateBlock }) => {
     const onLoadedMetadata = () => {
-        const seconds = audioRef.current.duration;
-        setDuration(seconds);
+        const seconds = audioRef.current.duration
+        setDuration(seconds)
         // progressBarRef.current.max = seconds;
     };
 
@@ -16,17 +17,17 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef, thu
                     <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
                     <Row className='mt-4'>
                         <Col className='d-flex justify-content-center'>
-                            <img className='trackcover' alt='track-cover' src={currentTrack.thumbnail} style={{ filter: 'blur(40px)' }} ref={thumbnail} />
+                            <img className='trackcover' alt='track-cover' src={currentTrack.thumbnail} style={elementSateBlur} />
                         </Col>
                     </Row>
-                    <Row className='mt-3'>
+                    <Row className='mt-4'>
                         <Col>
-                            <p className='tracktext' style={{ display: 'none' }} ref={trackText}>{currentTrack.title}</p>
+                            <p className='tracktext' style={elementSateNone}>{currentTrack.title}</p>
                         </Col>
                     </Row>
                     <Row className='mt-2'>
                         <Col>
-                            <p className='tracktext' style={{ display: 'none' }} ref={trackText1}>{currentTrack.author}</p>
+                            <p className='tracktext' style={elementSateNone}>{currentTrack.author}</p>
                         </Col>
                     </Row>
                 </Col>

@@ -1,17 +1,17 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom"
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 const Home = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     return (
         <Container fluid className='vh-100 d-flex align-items-center justify-content-center m-0 p-0'>
             <Col>
                 <Row className='d-flex justify-content-center mt-4'>
                     <Col className='col-lg-6'>
-                        <h1 className='display-1 homepagetext'>Song Quiz</h1>
+                        <h1 className='display-1 fw-bold homepagetext'>Song Quiz</h1>
                     </Col>
                 </Row>
                 <Row className='d-flex justify-content-center mt-4'>
@@ -61,4 +61,4 @@ const Home = () => {
     // )
 };
 
-export default Home;
+export default Home

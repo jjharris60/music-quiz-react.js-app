@@ -78,3 +78,9 @@ svg {
   background-color: transparent !important;
   border: 0 !important;
 }
+
+.seperator {
+  height: 1px;
+  width: 100%;
+  background-color: rgb(29, 26, 26);
+}
