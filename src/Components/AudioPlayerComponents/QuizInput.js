@@ -198,7 +198,7 @@ const QuizInput = ({ currentTrack, setTrackIndex, setCurrentTrack, tracks, track
                 <Row className='d-flex justify-content-center mt-4'>
                     <Col className='col-xl-3 col-lg-3 col-md-6 col-sm-8 col'>
                         <Row className="d-flex justify-content-center">
-                            <input className="inputfield" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your guess" style={elementStateBlock} />
+                            <input className="inputfield" type="text" value={inputValue} onChange={userInputHandler} placeholder="Your guess" style={elementStateBlock} required />
                         </Row>
                     </Col>
                 </Row>

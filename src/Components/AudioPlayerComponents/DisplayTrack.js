@@ -17,7 +17,7 @@ const DisplayTrack = ({ currentTrack, audioRef, setDuration, progressBarRef, ele
                     <audio src={currentTrack.src} ref={audioRef} onLoadedMetadata={onLoadedMetadata}></audio>
                     <Row className='mt-4'>
                         <Col className='d-flex justify-content-center'>
-                            <img className='trackcover' alt='track-cover' src={currentTrack.thumbnail} style={elementSateBlur} />
+                            <img className='trackcover' alt='song cover' src={currentTrack.thumbnail} style={elementSateBlur} />
                         </Col>
                     </Row>
                     <Row className='mt-4'>
