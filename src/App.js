@@ -24,7 +24,8 @@ const App = () => {
                 <Routes>
                     <Route exact path='/' element={<Home />} />
                     <Route exact path='/audioplayer' element={<AudioPlayer />} />
-                </Routes></BrowserRouter>
+                </Routes>
+            </BrowserRouter>
 
         </>
     )

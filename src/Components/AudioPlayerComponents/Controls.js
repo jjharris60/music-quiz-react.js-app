@@ -163,9 +163,6 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
         </Col>
       </Row>
     </Container>
-
-
-
   )
 };
 
