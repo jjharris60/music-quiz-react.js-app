@@ -63,8 +63,6 @@ const AudioPlayer = () => {
         filter: blur
     }
 
-
-
     return (
         <Container fluid className='vh-100 d-flex align-items-center'>
             <Col className='maincolumn'>

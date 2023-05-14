@@ -6,17 +6,6 @@ import Home from "./Components/Home";
 import AudioPlayer from './Components/AudioPlayerComponents/AudioPlayer';
 // import Home from './Components/AudioPlayerComponents/Pages/Home'
 
-
-// const App = () => {
-//     return (
-//         <div className='app'>
-//             <AudioPlayer />
-//         </div>
-//     )
-// }
-
-// export default App;
-
 const App = () => {
     return (
         <>

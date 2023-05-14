@@ -12,7 +12,7 @@ import {
 
 const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks, trackIndex, setTrackIndex, setCurrentTrack, timeProgress }) => {
 
-  const formatTime = useCallback((time) => {
+  const formatTime = (time) => {
     if (time && !isNaN(time)) {
       const minutes = Math.floor(time / 60)
       const formatMinutes =
@@ -23,7 +23,7 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
       return `${formatMinutes}:${formatSeconds}`
     }
     return '00:00'
-  }, [])
+  }
 
   // const [volume, setVolume] = useState(20)
   const playAnimationRef = useRef()
@@ -112,30 +112,6 @@ const Controls = ({ audioRef, progressBarRef, duration, setTimeProgress, tracks,
   //   setVolume(e.target.value);
   // }
 
-  // return (
-  //   <div className="controls-wrapper">
-  //     <div className="controls">
-  //       {/* <button>
-  //         <IoPlaySkipBackSharp onClick={handlePrevious} />
-  //       </button> */}
-  //       {/* <button onClick={skipBackward}>
-  // <IoPlayBackSharp />
-  //       </button> */}
-  // <button onClick={togglePlayPause} id='playpausebtn'>
-  //   {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
-  // </button>
-  //       {/* <button onClick={skipForward}>
-  //         <IoPlayForwardSharp />
-  //       </button> */}
-  //       {/* <button onClick={handleNext}>
-  //         <IoPlaySkipForwardSharp />
-  //       </button> */}
-  //     </div>
-  //     {/* <div className='volume'>
-  //       <input id='volume' type='range' max={100} value={volume} onChange={(volumeEvent) => setVolume(volumeEvent.target.value)} />
-  //     </div> */}
-  //   </div>
-  // );
   return (
     <Container fluid>
       <Row className='d-flex justify-content-center'>
